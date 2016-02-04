@@ -7,9 +7,9 @@ permissions="770"
 cat "students.data" | \
 while read student; do
 	mkdir -p $sourceRoot/$student/{submit,returned,mynotes}
-	sudo chown -R "$student:$group" $sourceRoot/$student/{submit,returned,mynotes}
-	sudo chown "$student:$student" $sourceRoot/$student
-	sudo chmod $permissions $sourceRoot/$student/{submit,returned,mynotes}
+	chown -R "$student:$group" $sourceRoot/$student/{submit,returned,mynotes}
+	chown "$student:$group" $sourceRoot/$student
+	chmod $permissions $sourceRoot/$student/{submit,returned,mynotes}
 
 	if \
 	[ -d $sourceRoot/$student/submit ] && \
