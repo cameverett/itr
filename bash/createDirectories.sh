@@ -7,11 +7,11 @@ permissions="770"
 while getopts ":c:s:" opt; do
 	case $opt in
 		c) 
-			echo "class is $OPTARG";;
+			class=$OPTARG
+			;;
 		s) 
-			echo "student file at $OPTARG"
 			studentfile=$OPTARG
-			echo $studentfile;;
+			;;
 		/?)
 			echo "Usage: bash createDirectories.sh -c <classname> -s <studentfile>"
 	esac
