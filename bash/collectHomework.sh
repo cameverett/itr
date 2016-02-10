@@ -2,10 +2,6 @@
 
 sourceRoot="/home"
 
-instructor="hwhite"
-tag="HW01_"
-studentfile="students.data"
-
 while getopts ":i:t:s:c:" opt; do
 	case $opt in
 		i) 
