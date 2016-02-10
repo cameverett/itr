@@ -4,7 +4,24 @@ sourceRoot="/home"
 group="instructors"
 permissions="770"
 
-cat "students.data" | \
+while getopts ":c:s:" opt; do
+	case $opt in
+		c) 
+			echo "class is $OPTARG";;
+		s) 
+			echo "student file at $OPTARG"
+			studentfile=$OPTARG
+			echo $studentfile;;
+		/?)
+			echo "Usage: bash createDirectories.sh -c <classname> -s <studentfile>"
+	esac
+done
+
+while [ ! -e $studentfile ]; do
+	read -p "Enter path to student list: " studentfile
+done
+
+cat "$studentfile" | \
 while read student; do
 	mkdir -p $sourceRoot/$student/{submit,returned,mynotes}
 	chown -R "$student:$group" $sourceRoot/$student/{submit,returned,mynotes}
