@@ -61,3 +61,4 @@ while read student; do
 	find $sourceRoot/$student/submit -name $tag* -exec cp {} $destination \;
 done
 
+chgrp -R "$USER:instructors" $destination
