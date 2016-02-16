@@ -37,13 +37,13 @@ setupStudents()
 
 while getopts ":r:i:s:" opt; do
 	case $opt in
-		r )
-			root=$OPTARG
+		r ) # Select different root for users
+			sourceRoot=$OPTARG
 			;;
-		i )
+		i ) # path to file containing usernames for instructors
 			instructorfile=$OPTARG
 			;;
-		s )
+		s ) # path to file containing usernames for students
 			studentfile=$OPTARG
 			;;
 		/? )
@@ -52,16 +52,16 @@ while getopts ":r:i:s:" opt; do
 	esac
 done
 
-echo "Setting up instructor accounts"
+printf "Setting up instructor accounts"
 if [[ ! $instructorfile ]] || [[ ! -f $instructorfile ]]; then
-	echo "-i you goofed"
+	printf "Usage: -i path to instructors file"
 else
 	setupInstructors $instructorfile
 fi
 
-echo "Setting up student accounts"
+printf "Setting up student accounts"
 if [[ ! $studentfile ]] || [[ ! -f $studentfile ]]; then
-	echo "-s you goofed"
+	printf "Usage: -s path to student file"
 else
 	setupStudents $studentfile
 fi
