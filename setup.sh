@@ -55,6 +55,7 @@ done
 printf "Setting up instructor accounts"
 if [[ ! $instructorfile ]] || [[ ! -f $instructorfile ]]; then
 	printf "Usage: -i path to instructors file"
+	exit 1
 else
 	setupInstructors $instructorfile
 fi
@@ -62,6 +63,7 @@ fi
 printf "Setting up student accounts"
 if [[ ! $studentfile ]] || [[ ! -f $studentfile ]]; then
 	printf "Usage: -s path to student file"
+	exit 1
 else
 	setupStudents $studentfile
 fi
