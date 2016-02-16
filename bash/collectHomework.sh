@@ -17,22 +17,22 @@ while getopts ":i:t:s:c:" opt; do
 			class=$OPTARG
 			;;
 		/?) 
-			echo "Invalid option was given"
+			printf "Invalid option was given"
 			;;
 	esac
 done
 
 if [ ! $instructor ] || [ ! $tag ] || [ ! $studentfile ]; then
 	if [ ! $instructor ]; then
-		echo "Missing argument -i <instructor>"
+		printf "Missing argument -i <instructor>"
 	fi
 
 	if [ ! $tag ]; then
-		echo "Missing argument -t <searchtag>"
+		printf "Missing argument -t <searchtag>"
 	fi
 
 	if [ ! $studentfile ]; then
-		echo "Missing argument -s <studentfile>"
+		printf "Missing argument -s <studentfile>"
 	fi
 
 	exit 1
@@ -45,7 +45,7 @@ else
 fi
 
 while [ ! -d $destination ]; do
-	echo "$destination does not exist." 
+	printf "%s does not exist." "$destination"
 	read -p "Would you like to create it or enter an existing one? (y/n)" response
 	case $response in 
 		y )

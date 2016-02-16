@@ -13,7 +13,7 @@ while getopts ":c:s:" opt; do
 			studentfile=$OPTARG
 			;;
 		/?)
-			echo "Usage: bash createDirectories.sh -c <classname> -s <studentfile>"
+			printf "Usage: bash createDirectories.sh -c <classname> -s <studentfile>"
 	esac
 done
 
@@ -33,9 +33,9 @@ while read student; do
 	[ -d $sourceRoot/$student/returned ] && \
 	[ -d $sourceRoot/$student/mynotes ];
 	then
-		echo "Directories created successfully for $student"
+		printf "Directories created successfully for $student"
 	else
-		>&2 echo "Failed to create directories for $student"
+		printf "Failed to create directories for $student"
 	fi
 done
 
