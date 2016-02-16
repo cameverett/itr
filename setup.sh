@@ -55,7 +55,7 @@ while getopts ":r:i:s:p:" opt; do
 			instructor_scripts=$OPTARG
 			;;
 		/? )
-			printf "Usage: sudo bash setup.sh -i </path/to/instructorfile> -s </path/to/studentfile>"
+			printf "Usage: sudo /path/to/setup.sh -i </path/to/instructorfile> -s </path/to/studentfile>"
 			exit 1
 			;;
 	esac
