@@ -15,6 +15,9 @@ setupInstructors()
 		printf "$sourceRoot/$inputline $INSTRUCTOR_GROUP\n"
 		useradd -g instructors --create-home $inputline
 		printf "%s:%s1" "$inputline" "$inputline" | chpasswd
+		mkdir -p "$sourceRoot/$inputline/bin"
+		cp bash/*.sh $sourceRoot/$inputline/bin
+		cp setup.sh cleanup.sh $sourceRoot/$inputline/bin
 		chown -R "$inputline:$INSTRUCTOR_GROUP" $sourceRoot/$inputline
 		chmod -R 740 $sourceRoot/$inputline
 	done
@@ -56,13 +59,13 @@ while getopts ":r:i:s:" opt; do
 done
 
 if [[ ! -f $instructorfile ]]; then
-	printf "\tError '$instructorfile' not a file:\n\tUsage: -i path to instructors file\n"
+	printf "\tError '$instructorfile' is not a file:\n\tUsage: -i path to instructors file\n"
 else
 	setupInstructors $instructorfile
 fi
 
 if [[ ! -f $studentfile ]]; then
-	printf "\tError '$studentfile' not a file:\n\tUsage: -s path to student file\n"
+	printf "\tError '$studentfile' is not a file:\n\tUsage: -s path to student file\n"
 else
 	setupStudents $studentfile
 fi
