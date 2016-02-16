@@ -17,7 +17,6 @@ setupInstructors()
 		printf "%s:%s1" "$inputline" "$inputline" | chpasswd
 		mkdir -p "$sourceRoot/$inputline/bin"
 		cp bash/*.sh $sourceRoot/$inputline/bin
-		cp setup.sh cleanup.sh $sourceRoot/$inputline/bin
 		chown -R "$inputline:$INSTRUCTOR_GROUP" $sourceRoot/$inputline
 		chmod -R 740 $sourceRoot/$inputline
 	done
