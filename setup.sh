@@ -65,5 +65,3 @@ if [[ ! $studentfile ]] || [[ ! -f $studentfile ]]; then
 else
 	setupStudents $studentfile
 fi
-
-tree /home
