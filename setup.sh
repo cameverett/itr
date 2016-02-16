@@ -12,13 +12,13 @@ setupInstructors()
 	printf "Setting up instructor accounts\n"
 	cat $1 | \
 	while read inputline; do
-		printf "$sourceRoot/$inputline $INSTRUCTOR_GROUP  "
+		printf "$sourceRoot/$inputline $INSTRUCTOR_GROUP\n"
 		useradd -g instructors --create-home $inputline
 		printf "%s:%s1" "$inputline" "$inputline" | chpasswd
 		chown -R "$inputline:$INSTRUCTOR_GROUP" $sourceRoot/$inputline
 		chmod -R 740 $sourceRoot/$inputline
 	done
-	printf "done reading $1\n\n";
+	printf "done reading $1\n";
 }
 
 # $1 => text input file
@@ -34,7 +34,7 @@ setupStudents()
 		chown -R "$inputline:$INSTRUCTOR_GROUP" $sourceRoot/$inputline
 		chmod -R 770 $sourceRoot/$inputline
 	done
-	printf "done reading $1";
+	printf "done reading $1\n";
 }
 
 while getopts ":r:i:s:" opt; do
@@ -49,6 +49,7 @@ while getopts ":r:i:s:" opt; do
 			studentfile=$OPTARG
 			;;
 		/? )
+			printf "Usage: sudo bash setup.sh -i </path/to/instructorfile> -s </path/to/studentfile>"
 			exit 1
 			;;
 	esac
