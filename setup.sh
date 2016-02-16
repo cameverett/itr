@@ -7,6 +7,7 @@ sourceRoot="/home"
 groupadd instructors
 
 # $1 => text input file
+# $2 => directory to exported instructor scripts
 setupInstructors()
 {
 	printf "Setting up instructor accounts\n"
@@ -16,7 +17,7 @@ setupInstructors()
 		useradd -g instructors --create-home $inputline
 		printf "%s:%s1" "$inputline" "$inputline" | chpasswd
 		mkdir -p "$sourceRoot/$inputline/bin"
-		cp bash/collectHomework.sh bash/createDirectories.sh $sourceRoot/$inputline/bin
+		cp $2/*.sh $sourceRoot/$inputline/bin
 		chown -R "$inputline:$INSTRUCTOR_GROUP" $sourceRoot/$inputline
 		chmod -R 740 $sourceRoot/$inputline
 	done
@@ -39,7 +40,7 @@ setupStudents()
 	printf "done reading $1\n";
 }
 
-while getopts ":r:i:s:" opt; do
+while getopts ":r:i:s:p:" opt; do
 	case $opt in
 		r ) # Select different root for users
 			sourceRoot=$OPTARG
@@ -50,6 +51,9 @@ while getopts ":r:i:s:" opt; do
 		s ) # path to file containing usernames for students
 			studentfile=$OPTARG
 			;;
+		p ) # path to directory containing bash scripts for instructors
+			instructor_scripts=$OPTARG
+			;;
 		/? )
 			printf "Usage: sudo bash setup.sh -i </path/to/instructorfile> -s </path/to/studentfile>"
 			exit 1
@@ -59,8 +63,10 @@ done
 
 if [[ ! -f $instructorfile ]]; then
 	printf "\tError '$instructorfile' is not a file:\n\tUsage: -i path to instructors file\n"
+elif [[ ! -d $instructor_scripts ]]; then
+	printf "\tError '$instructor_scripts' is not a directory:\n\tUsage: -p path to folder containing instructor scripts\n"
 else
-	setupInstructors $instructorfile
+	setupInstructors $instructorfile $instructor_scripts
 fi
 
 if [[ ! -f $studentfile ]]; then
