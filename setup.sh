@@ -9,6 +9,7 @@ groupadd instructors
 # $1 => text input file
 setupInstructors()
 {
+	printf "Setting up instructor accounts\n"
 	cat $1 | \
 	while read inputline; do
 		printf "$sourceRoot/$inputline $INSTRUCTOR_GROUP  "
@@ -23,6 +24,7 @@ setupInstructors()
 # $1 => text input file
 setupStudents()
 {
+	printf "Setting up student accounts\n"
 	cat $1 | \
 	while read inputline; do
 		printf "$sourceRoot/$inputline\n"
@@ -52,18 +54,14 @@ while getopts ":r:i:s:" opt; do
 	esac
 done
 
-printf "Setting up instructor accounts"
-if [[ ! $instructorfile ]] || [[ ! -f $instructorfile ]]; then
-	printf "Usage: -i path to instructors file"
-	exit 1
+if [[ ! -f $instructorfile ]]; then
+	printf "\tError '$instructorfile' not a file:\n\tUsage: -i path to instructors file\n"
 else
 	setupInstructors $instructorfile
 fi
 
-printf "Setting up student accounts"
-if [[ ! $studentfile ]] || [[ ! -f $studentfile ]]; then
-	printf "Usage: -s path to student file"
-	exit 1
+if [[ ! -f $studentfile ]]; then
+	printf "\tError '$studentfile' not a file:\n\tUsage: -s path to student file\n"
 else
 	setupStudents $studentfile
 fi
