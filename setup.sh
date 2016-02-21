@@ -60,7 +60,7 @@ while getopts ":r:i:s:p:" opt; do
 		p ) # path to directory containing bash scripts for instructors
 			instructor_scripts=$OPTARG
 			;;
-		/? )
+		* )
 			printf "Usage: sudo /path/to/setup.sh -i </path/to/instructorfile> -s </path/to/studentfile>"
 			exit 1
 			;;

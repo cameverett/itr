@@ -10,8 +10,8 @@ while getopts ":i:s:" opt; do
 		s )
 			studentfile=$OPTARG
 			;;
-		/? )
-			printf "Usage sudo /path/to/cleanup.sh -i </path/to/instructorfile> -s </path/to/studentfile>"
+		* )
+			printf "Usage sudo </path/to/cleanup.sh> -i </path/to/instructorfile> -s </path/to/studentfile>"
 			;;
 	esac
 done
@@ -19,7 +19,6 @@ done
 if [[ ! -f $instructorfile ]]; then
 	printf "\tError '$instructorfile' not a file:\n\tUsage: -i path to instructors file\n"
 else
-	
 	while read instructor; do
 		userdel $instructor -r -f
 	done < $instructorfile
