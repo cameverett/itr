@@ -2,40 +2,53 @@
 
 sourceRoot="/home"
 group="instructors"
-permissions="770"
+permissions="777"
 
-while getopts ":c:s:" opt; do
+showUsage()
+{
+	printf "Usage: bash createDirectories.sh -c <classname> -s </path/to/studentfile>\n";
+}
+
+while getopts ":i:c:s:" opt; do
 	case $opt in
-		c) 
+		i )
+			INSTRUCTOR_HOME_DIR="/home/$OPTARG"
+			;;
+		c ) 
 			class=$OPTARG
 			;;
-		s) 
+		s ) 
 			studentfile=$OPTARG
 			;;
-		/?)
-			printf "Usage: bash createDirectories.sh -c <classname> -s <studentfile>"
+		* )
+			showUsage
+			exit 1
 	esac
 done
 
-while [ ! -e $studentfile ]; do
-	read -p "Enter path to student list: " studentfile
-done
+if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f $studentfile ] || [ ! $class ]; then
+			showUsage
+			exit 1
+fi
 
-cat "$studentfile" | \
+mkdir -p $INSTRUCTOR_HOME_DIR/$class/{submissions,mynotes,return}
+
 while read student; do
-	mkdir -p $sourceRoot/$student/{submit,returned,mynotes}
-	chown -R "$student:$group" $sourceRoot/$student/{submit,returned,mynotes}
-	chown "$student:$group" $sourceRoot/$student
-	chmod $permissions $sourceRoot/$student/{submit,returned,mynotes}
+	STUDENT_HOME_DIR="$sourceRoot/$student"
+	mkdir -p $STUDENT_HOME_DIR/$class/{submit,returned,mynotes}
+	#chown -R "$student:$group" $STUDENT_HOME_DIR/$class/{submit,returned,mynotes}
+	chown -R "$student:$group" $STUDENT_HOME_DIR/$class 
+	chmod -R $permissions $INSTRUCTOR_HOME_DIR/$class/{submit,returned,mynotes}
+	#cp -r $INSTRUCTOR_HOME_DIR/$class $STUDENT_HOME_DIR/
 
 	if \
-	[ -d $sourceRoot/$student/submit ] && \
-	[ -d $sourceRoot/$student/returned ] && \
-	[ -d $sourceRoot/$student/mynotes ];
+	[ -d $STUDENT_HOME_DIR/$class/submit ] && \
+	[ -d $STUDENT_HOME_DIR/$class/returned ] && \
+	[ -d $STUDENT_HOME_DIR/$class/mynotes ];
 	then
-		printf "Directories created successfully for $student"
+		printf "Directories created successfully for $student\n"
 	else
-		printf "Failed to create directories for $student"
+		printf "Failed to create directories for $student\n"
 	fi
-done
+done < $studentfile
 

@@ -13,11 +13,11 @@ setupInstructors()
 	printf "Setting up instructor accounts\n"
 	while read inputline; do
 		DESTINATION_ROOT="$sourceRoot/$inputline"
-		COLLECT_ALIAS="alias class_create=\"$DESTINATION_ROOT/bin/createDirectories.sh\""
-		CREATE_ALIAS="alias class_collect=\"$DESTINATION_ROOT/bin/collectHomework.sh\""
-		RETURN_ALIAS="alias class_return=\"$DESTINATION_ROOT/bin/returnHomework.sh\""
+		COLLECT_ALIAS="alias class_create=\"sudo bash $DESTINATION_ROOT/bin/createDirectories.sh\""
+		CREATE_ALIAS="alias class_collect=\"sudo bash $DESTINATION_ROOT/bin/collectHomework.sh\""
+		RETURN_ALIAS="alias class_return=\"sudo bash $DESTINATION_ROOT/bin/returnHomework.sh\""
 		printf "$DESTINATION_ROOT $INSTRUCTOR_GROUP\n"
-		useradd -g instructors --create-home $inputline
+		useradd -g sudo -G $INSTRUCTOR_GROUP --create-home $inputline
 		printf "%s:%s1" "$inputline" "$inputline" | chpasswd
 		mkdir -p "$DESTINATION_ROOT/bin"
 		cp $2/*.sh "$DESTINATION_ROOT/bin"
