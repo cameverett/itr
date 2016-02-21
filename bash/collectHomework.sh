@@ -1,10 +1,11 @@
 #!/bin/bash
 
 sourceRoot="/home"
+INSTRUCTOR_GROUP="instructors"
 
 showUsage()
 {
-	printf "Usage: class_collect -t <tag> -s </path/to/studentfile -c <class>\n";
+	printf "Usage: class_collect -i <your_username> -t <tag> -s </path/to/studentfile -c <class>\n";
 }
 
 while getopts ":i:t:s:c:" opt; do
@@ -50,7 +51,7 @@ if [ ! $instructor ] || [ ! $tag ] || [ ! $studentfile ] || [ ! $class ]; then
 	exit 1
 fi
 
-destination="$sourceRoot/$instructor/$class/homework"
+destination="$sourceRoot/$instructor/$class/submissions"
 
 if [ ! -d $destination ]; then
 	printf "%s does not exist." "$destination"
@@ -58,6 +59,7 @@ if [ ! -d $destination ]; then
 	case $response in 
 		y )
 			mkdir -p $destination
+			chown -R "$instructor:$INSTRUCTOR_GROUP" $destination
 			;;
 		n )
 			showUsage
@@ -73,3 +75,6 @@ fi
 while read student; do
 	find $sourceRoot/$student/$class/submit -name $tag* -exec cp {} $destination \;
 done < $studentfile
+
+chown -R "$instructor:$INSTRUCTOR_GROUP" $destination
+chmod -R 770 $destination

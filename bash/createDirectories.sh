@@ -2,7 +2,7 @@
 
 sourceRoot="/home"
 group="instructors"
-permissions="777"
+permissions="770"
 
 showUsage()
 {
@@ -31,15 +31,14 @@ if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f $studentfile ] || [ ! $class ]; then
 			exit 1
 fi
 
-mkdir -p $INSTRUCTOR_HOME_DIR/$class/{submissions,mynotes,return}
+mkdir -p $INSTRUCTOR_HOME_DIR/$class/{submissions,mynotes,returned}
+chown -R "$instructor:$group" $INSTRUCTOR_HOME_DIR/$class
+chmod -R $permissions $INSTRUCTOR_HOME_DIR/$class
 
 while read student; do
 	STUDENT_HOME_DIR="$sourceRoot/$student"
 	mkdir -p $STUDENT_HOME_DIR/$class/{submit,returned,mynotes}
-	#chown -R "$student:$group" $STUDENT_HOME_DIR/$class/{submit,returned,mynotes}
 	chown -R "$student:$group" $STUDENT_HOME_DIR/$class 
-	chmod -R $permissions $INSTRUCTOR_HOME_DIR/$class/{submit,returned,mynotes}
-	#cp -r $INSTRUCTOR_HOME_DIR/$class $STUDENT_HOME_DIR/
 
 	if \
 	[ -d $STUDENT_HOME_DIR/$class/submit ] && \
