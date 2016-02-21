@@ -11,33 +11,39 @@ groupadd instructors
 setupInstructors()
 {
 	printf "Setting up instructor accounts\n"
-	cat $1 | \
 	while read inputline; do
-		printf "$sourceRoot/$inputline $INSTRUCTOR_GROUP\n"
+		DESTINATION_ROOT="$sourceRoot/$inputline"
+		COLLECT_ALIAS="alias class_create=\"$DESTINATION_ROOT/bin/createDirectories.sh\""
+		CREATE_ALIAS="alias class_collect=\"$DESTINATION_ROOT/bin/collectHomework.sh\""
+		RETURN_ALIAS="alias class_return=\"$DESTINATION_ROOT/bin/returnHomework.sh\""
+		printf "$DESTINATION_ROOT $INSTRUCTOR_GROUP\n"
 		useradd -g instructors --create-home $inputline
 		printf "%s:%s1" "$inputline" "$inputline" | chpasswd
-		mkdir -p "$sourceRoot/$inputline/bin"
-		cp $2/*.sh $sourceRoot/$inputline/bin
-		chown -R "$inputline:$INSTRUCTOR_GROUP" $sourceRoot/$inputline
-		chmod -R 740 $sourceRoot/$inputline
-	done
-	printf "done reading $1\n";
+		mkdir -p "$DESTINATION_ROOT/bin"
+		cp $2/*.sh "$DESTINATION_ROOT/bin"
+		touch $DESTINATION_ROOT/.bash_aliases
+		printf "%s\n%s\n%s" "$COLLECT_ALIAS" "$CREATE_ALIAS" "$RETURN_ALIAS" >> $DESTINATION_ROOT/.bash_aliases
+		chown -R "$inputline:$INSTRUCTOR_GROUP" $DESTINATION_ROOT
+		chmod -R 740 $DESTINATION_ROOT
+	done < $1
+	printf "done reading instructor accounts: $1\n";
 }
 
 # $1 => text input file
 setupStudents()
 {
 	printf "Setting up student accounts\n"
-	cat $1 | \
+	printf "%s\n" "$1"
 	while read inputline; do
-		printf "$sourceRoot/$inputline\n"
+		DESTINATION_ROOT="$sourceRoot/$inputline"
+		printf "$DESTINATION_ROOT\n"
 		useradd --create-home $inputline
 		printf "%s:%s1" "$inputline" "$inputline" | chpasswd
-		mkdir -p $sourceRoot/$inputline/{submit,mynotes,returned}
-		chown -R "$inputline:$INSTRUCTOR_GROUP" $sourceRoot/$inputline
-		chmod -R 770 $sourceRoot/$inputline
-	done
-	printf "done reading $1\n";
+		mkdir -p $DESTINATION_ROOT/{submit,mynotes,returned}
+		chown -R "$inputline:$INSTRUCTOR_GROUP" $DESTINATION_ROOT
+		chmod -R 770 $DESTINATION_ROOT
+	done < $1
+	printf "done reading students: $1\n";
 }
 
 while getopts ":r:i:s:p:" opt; do

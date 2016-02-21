@@ -19,19 +19,19 @@ done
 if [[ ! -f $instructorfile ]]; then
 	printf "\tError '$instructorfile' not a file:\n\tUsage: -i path to instructors file\n"
 else
-	cat $instructorfile | \
-	while read inputline; do
-		userdel $inputline -r -f
-	done
+	
+	while read instructor; do
+		userdel $instructor -r -f
+	done < $instructorfile
 fi
 
 if [[ ! -f $studentfile ]]; then
 	printf "\tError '$studentfile' not a file:\n\tUsage: -s path to student file\n"
 else
-	cat $studentfile | \
-	while read inputline; do
-		userdel	$inputline -r -f
-	done
+	
+	while read student; do
+		userdel	$student -r -f
+	done < $studentfile
 fi
 
 groupdel instructors
