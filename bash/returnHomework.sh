@@ -12,7 +12,16 @@ while getopts ":s:c:t:" opt; do
 done
 	
 	if [[ ! -f $studentfile ]] || [[ ! $class ]] || [[ ! $tag ]]; then
-		echo "You Goofed!"
-	exit 1
-	fi		
+		if [ ! studentfile ]; then
+			printf "Missing Argument -s </path/to/studentfile>\n"
+
+		if [ ! $class ]; then
+			printf "Missing Argument -c <class>\n"
+
+		if [ ! $tag ]; then
+			printf "missing argument -t <searchtag>\n"
+
+		fi
 	
+		exit 1
+fi	
