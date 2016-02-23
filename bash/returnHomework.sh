@@ -12,7 +12,7 @@ while getopts ":s:c:t:" opt; do
 done
 	
 	if [[ ! -f $studentfile ]] || [[ ! $class ]] || [[ ! $tag ]]; then
-		if [ ! studentfile ]; then
+		if [ ! $studentfile ]; then
 			printf "Missing Argument -s </path/to/studentfile>\n"
 
 		if [ ! $class ]; then
@@ -28,7 +28,7 @@ fi
 
 returnSpot="$sourceRoot/$class/$studentfile/returned"
 
-if [ ! -d $destination ]; then
+if [ ! -d $returnSpot ]; then
 	printf "%does not exist." "$returnSpot"
 	read -p "Would you like to create it? (y/n)" response
 	case $response in
