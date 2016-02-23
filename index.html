@@ -1,1 +1,217 @@
-"Nothing to see yet, move along..." 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>IT-R Package Manual</title>
+
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<style>
+
+	body {
+		background-color: #c35;
+		margin-bottom: 0.5rem;
+	}
+	.col-md-3 {
+		color: #fff;
+		top: 0;
+		bottom: 0;
+		left: 0;
+	}
+	ul {
+		list-style: square;
+	}
+	.col-md-3 a:link {
+		color: #fff;
+		text-decoration: none;
+	}
+	.col-md-3 a:visited {
+		color: #fff;
+	}
+	.col-md-3 a:hover {
+		color: #fff;
+	}
+	#nav {
+		padding-bottom: 0.15em;
+	}
+	#nav h2 {
+		font-weight: bold;
+	}
+	#main {
+		padding-bottom: 0.25em;
+	}
+	hr {
+		border: 0.1em solid #000;
+	}
+	h2 strong {
+		background-color: #fff2e6;
+	}
+	</style>
+</head>
+<body>
+
+<div class="container-fluid">
+<div class="row">
+	<div id="nav" class="col-md-3">
+		<nav>
+		<h2><em><a href="#sys_admin">System Admin</a></em></h2>
+			<ul>
+				<li><a href="#sys_req">System Requirements</a></li>
+				<li><a href="#sys_setup">Setup Environment</a></li>
+				<li><a href="#sys_reset">Reset Environment</a></li>
+			</ul>
+		<h2><em><a href="#instr_toolkit">Instructor Toolkit</a></em></h2>
+			<ul>
+				<li><a href="#assign">Assign</a></li>
+				<li><a href="#collect">Collect</a></li>
+				<li><a href="#create">Create</a></li>
+				<li><a href="#return">Return</a></li>
+			</ul>
+		</nav>
+	</div>
+	<div id="main" class="col-md-9" style="background-color: #fff">
+		<h1 id="top"><strong>IT-R Class Manager</strong></h1>
+
+		<p><strong>The online help manual is currently a work in progress.</strong></p>
+		<h3><strong>What is IT-R?</strong></h3>
+			<p>IT-R is a collection of bash scripts and R functions that allow instructors who use servers for teaching with R-Studio more easily handle tasks such as assigning, collecting, and returning assignments.</p>
+
+		<h2 id="sys_admin">
+			<strong>System Admins</strong>
+		</h2>
+		<hr>
+		<!--<h3 id="sys_req">System Requirements</h3>-->
+		<h3 id="sys_setup">Setup Environment</h3>
+		<p>Login as a user with sudo privileges. Then clone the GitHub Repository on your machine.</p>
+
+		<p>
+			<strong>SSH (preferred)</strong>
+			<p>
+			<code>git clone git@github.com:cameverett/itr.git</code>
+			</p>
+			<p>or...</p>
+			<strong>HTTPS</strong>
+			<p>
+			<code>git clone https://github.com/cameverett/itr.git</code>
+			</p>
+
+			<p>
+				Create a text file with the list of all instructor usernames and another text file for all student usernames you want to setup in the test environment and <code>cd</code> into the cloned itr repository.
+			</p>
+			<div>
+			<code style="display:inline-block;">
+<pre>
+(e.g. /home/user/instructors.txt)
+
+instructor0
+instructor1
+instructor2
+instructor3
+instructor4
+</pre>
+			</code>
+
+			<code style="display: inline-block;">
+<pre>
+(e.g. /home/user/students.txt)
+
+student0
+student1
+student2
+student3
+student4
+</pre>
+			</code>
+
+			<p>
+			and then <code>cd /path/to/repo/itr</code>.
+			</p>
+				
+			</div>
+
+			<p>
+				Now it is time to run the setup.sh script in the repository.
+			</p>
+
+			<p>
+				<code>ls .</code><br>
+				<code>sudo bash setup.sh -i /path/to/instructorfile.txt -s /path/to/studentsfile.txt -p ./bash</code><br>
+			</p>
+
+		</p>
+
+		<p>
+			Users will be created with their username in the text file and a password with a 1 added on to the end of the username so that<br>
+			<code>username: instructor0, password: instructor01</code>
+
+		</p>
+
+		<p>
+			You have now created a test environment of students and teachers. The instructors are given sudo privileges and are part of the instructors user group. Students are treated as regular users with limited permissions on the server.
+		</p>
+
+		<h3 id="sys_reset">Reset Environment</h3>
+		<p>
+				Create a text file with the list of all instructor usernames and another text file for all student usernames you want to remove in the test environment and <code>cd</code> into the cloned itr repository.
+			</p>
+			<div>
+			<code style="display:inline-block;">
+<pre>
+(e.g. /home/user/instructors.txt)
+
+instructor0
+instructor1
+instructor2
+instructor3
+instructor4
+</pre>
+			</code>
+
+			<code style="display: inline-block;">
+<pre>
+(e.g. /home/user/students.txt)
+
+student0
+student1
+student2
+student3
+student4
+</pre>
+			</code>
+
+			<p>
+			and then <code>cd /path/to/repo/itr</code>.
+			</p>
+
+			</p>
+			<strong>Warning</strong> This will permanently remove users in these files from the system.<br>
+			<p>
+			<code>sudo bash cleanup.sh -i &lt/path/to/instructorsfile.txt&gt -s &lt/path/to/studentsfile.txt&gt</code>
+				
+			</div>
+
+		<h2 id="instr_toolkit">
+			<strong>Instructor Toolkit</strong>
+		</h2>
+		<hr>
+		<h3 id="assign">Assign</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut nesciunt maxime tempora aliquam sapiente excepturi quidem mollitia iusto cumque similique.</p>
+		<pre><code>class_assign -c &ltclass&gt -s &lt/path/to/studentfile&gt</code></pre>
+		<h3 id="collect">Collect</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, quasi?</p>
+		<pre><code>class_collect -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/studentfile&gt</code></pre>
+		<h3 id="create">Create</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, quasi?</p>
+		<pre><code>class_create -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/studentfile&gt</code></pre>
+		<h3 id="return">Return</h3>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, quasi?</p>
+		<pre><code>class_return -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/studentfile&gt</code></pre>
+		
+	</div>
+</div>
+	
+</div>
+
+	
+</body>
+</html>
