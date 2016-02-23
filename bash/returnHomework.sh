@@ -1,9 +1,10 @@
-sourceRoot="/home/"
+sourceRoot="/home"
 group="instructors"
 permissions="770"
 
-while getopts ":s:c:t:" opt; do
+while getopts ":i:s:c:t:" opt; do
 	case $opt in
+	i ) instructor=$OPTARG;;
 	s ) studentfile=$OPTARG;;
 	c ) class=$OPTARG;;
 	t ) tag=$OPTARG;;
@@ -11,14 +12,16 @@ while getopts ":s:c:t:" opt; do
 	esac
 done
 	
-	if [[ ! -f $studentfile ]] || [[ ! $class ]] || [[ ! $tag ]]; then
-		if [ ! $studentfile ]; then
+	if [[ ! $instructor ]] || [[ ! -f $studentfile ]] || [[ ! $class ]] || [[ ! $tag ]]; then
+		if [ ! $instructor ]; then
+			printf "Missing Argument -i <instructor_username>"
+		elif [ ! $studentfile ]; then
 			printf "Missing Argument -s </path/to/studentfile>\n"
 
-		if [ ! $class ]; then
+		elif [ ! $class ]; then
 			printf "Missing Argument -c <class>\n"
 
-		if [ ! $tag ]; then
+		elif [ ! $tag ]; then
 			printf "missing argument -t <searchtag>\n"
 
 		fi
@@ -26,7 +29,8 @@ done
 		exit 1
 fi	
 
-returnSpot="$sourceRoot/$class/$studentfile/returned"
+#returnSpot="$sourceRoot/$class/$studentfile/returned"
+returnSpot="$sourceRoot/$instructor/$class/submissions"
 
 if [ ! -d $returnSpot ]; then
 	printf "%does not exist." "$returnSpot"
