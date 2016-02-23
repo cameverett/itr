@@ -80,3 +80,8 @@ if [[ ! -f $studentfile ]]; then
 else
 	setupStudents $studentfile
 fi
+
+# put man pages in /usr/share/man/man1
+cp class_create.1.gz /usr/share/man/man1
+cp class_collect.1.gz /usr/share/man/man1
+
