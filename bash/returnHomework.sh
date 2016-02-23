@@ -25,3 +25,29 @@ done
 	
 		exit 1
 fi	
+
+returnSpot="$sourceRoot/$class/$studentfile/returned"
+
+if [ ! -d $destination ]; then
+	printf "%does not exist." "$returnSpot"
+	read -p "Would you like to create it? (y/n)" response
+	case $response in
+		y ) 
+			mkdir -p $returnSpot
+			;;
+
+		n ) 
+			showUsage
+			exit 1
+			;;
+
+		* )
+			showUsage
+			exit 1
+			;;
+
+	esac
+
+fi
+
+
