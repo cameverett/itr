@@ -34,3 +34,5 @@ else
 fi
 
 groupdel instructors
+rm /usr/share/man/man1/class_collect.1.gz
+rm /usr/share/man/man1/class_create.1.gz
