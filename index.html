@@ -135,7 +135,7 @@ student4
 
 			<p>
 				<code>ls .</code><br>
-				<code>sudo bash setup.sh -i /path/to/instructorfile.txt -s /path/to/studentsfile.txt -p bash/</code><br>
+				<code>sudo bash setup.sh -i /path/to/instructors.txt -s /path/to/students.txt -p bash/</code><br>
 			</p>
 
 		</p>
@@ -186,7 +186,7 @@ student4
 			</p>
 			<strong>Warning</strong> This will permanently remove users in these files from the system.<br>
 			<p>
-			<code>sudo bash cleanup.sh -i &lt/path/to/instructorsfile.txt&gt -s &lt/path/to/studentsfile.txt&gt</code>
+			<code>sudo bash cleanup.sh -i &lt/path/to/instructors.txt&gt -s &lt/path/to/students.txt&gt</code>
 				
 			</div>
 
@@ -196,16 +196,16 @@ student4
 		<hr>
 		<h3 id="assign">Assign (work in progress)</h3>
 		<p>Copy a file or folder and place it in <code>/home/student/class/assignments</code></p>
-		<pre><code>class_assign -c &ltclass&gt -s &lt/path/to/studentfile&gt -a &lt/path/to/fileorfolder&gt</code></pre>
+		<pre><code>class_assign -c &ltclass&gt -s &lt/path/to/students.txt&gt -a &lt/path/to/fileorfolder&gt</code></pre>
 		<h3 id="collect">Collect (ready for testing)</h3>
 		<p>Find and copy student work into your <code>/home/&ltinstructor&gt/&ltclass&gt/submissions</code> folder. The program will find files according to the tag (-t) option given.</p>
-		<pre><code>class_collect -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/studentfile&gt</code></pre>
+		<pre><code>class_collect -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/students.txt&gt</code></pre>
 		<h3 id="create">Create (ready for testing)</h3>
 		<p>Creates directories for students <code>/home/&ltstudent&gt/&ltclass&gt/{submit,returned,mynotes}</code>.</p>
-		<pre><code>class_create -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/studentfile&gt</code></pre>
+		<pre><code>class_create -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/students.txt&gt</code></pre>
 		<h3 id="return">Return (work in progress)</h3>
 		<p>Copies files placed in <code>/home/&ltinstructor&gt/&ltclass&gt/return</code> folder to your students' <code>/home/&ltstudent&gt/&ltclass&gt/returned</code> folder.</p>
-		<pre><code>class_return -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/studentfile&gt</code></pre>
+		<pre><code>class_return -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/students.txt&gt</code></pre>
 		
 	</div>
 </div>
