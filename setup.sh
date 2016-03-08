@@ -7,20 +7,19 @@ sourceRoot="/home"
 groupadd instructors
 
 # $1 => text input file
-# $2 => directory to exported instructor scripts
 setupInstructors()
 {
 	printf "Setting up instructor accounts\n"
 	while read inputline; do
 		DESTINATION_ROOT="$sourceRoot/$inputline"
-		COLLECT_ALIAS="alias class_create=\"sudo bash $DESTINATION_ROOT/bin/createDirectories.sh\""
-		CREATE_ALIAS="alias class_collect=\"sudo bash $DESTINATION_ROOT/bin/collectHomework.sh\""
-		RETURN_ALIAS="alias class_return=\"sudo bash $DESTINATION_ROOT/bin/returnHomework.sh\""
+		COLLECT_ALIAS="alias class_create=\"sudo bash $DESTINATION_ROOT/bin/bash/createDirectories.sh\""
+		CREATE_ALIAS="alias class_collect=\"sudo bash $DESTINATION_ROOT/bin/bash/collectHomework.sh\""
+		RETURN_ALIAS="alias class_return=\"sudo bash $DESTINATION_ROOT/bin/bash/returnHomework.sh\""
 		printf "$DESTINATION_ROOT $INSTRUCTOR_GROUP\n"
 		useradd -g sudo -G $INSTRUCTOR_GROUP --create-home $inputline
 		printf "%s:%s1" "$inputline" "$inputline" | chpasswd
 		mkdir -p "$DESTINATION_ROOT/bin"
-		cp $2/*.sh "$DESTINATION_ROOT/bin"
+		cp -r "bash/" "$DESTINATION_ROOT/bin"
 		touch $DESTINATION_ROOT/.bash_aliases
 		printf "%s\n%s\n%s" "$COLLECT_ALIAS" "$CREATE_ALIAS" "$RETURN_ALIAS" >> $DESTINATION_ROOT/.bash_aliases
 		chown -R "$inputline:$INSTRUCTOR_GROUP" $DESTINATION_ROOT
@@ -46,7 +45,7 @@ setupStudents()
 	printf "done reading students: $1\n";
 }
 
-while getopts ":r:i:s:p:" opt; do
+while getopts ":r:i:s:" opt; do
 	case $opt in
 		r ) # Select different root for users
 			sourceRoot=$OPTARG
@@ -57,9 +56,6 @@ while getopts ":r:i:s:p:" opt; do
 		s ) # path to file containing usernames for students
 			studentfile=$OPTARG
 			;;
-		p ) # path to directory containing bash scripts for instructors
-			instructor_scripts=$OPTARG
-			;;
 		* )
 			printf "Usage: sudo /path/to/setup.sh -i </path/to/instructorfile> -s </path/to/studentfile>"
 			exit 1
@@ -69,10 +65,9 @@ done
 
 if [[ ! -f $instructorfile ]]; then
 	printf "\tError '$instructorfile' is not a file:\n\tUsage: -i path to instructors file\n"
-elif [[ ! -d $instructor_scripts ]]; then
-	printf "\tError '$instructor_scripts' is not a directory:\n\tUsage: -p path to folder containing instructor scripts\n"
+	exit 1
 else
-	setupInstructors $instructorfile $instructor_scripts
+	setupInstructors $instructorfile
 fi
 
 if [[ ! -f $studentfile ]]; then

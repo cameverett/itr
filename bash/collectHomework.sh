@@ -5,10 +5,10 @@ INSTRUCTOR_GROUP="instructors"
 
 showUsage()
 {
-	printf "Usage: class_collect -i <your_username> -t <tag> -s </path/to/studentfile -c <class>\n";
+	printf "Usage: class_collect -i <your_username> -t <tag> -s </path/to/studentfile\n";
 }
 
-while getopts ":i:t:s:c:" opt; do
+while getopts ":i:t:s:" opt; do
 	case $opt in
 		i) 
 			instructor=$OPTARG
@@ -19,9 +19,6 @@ while getopts ":i:t:s:c:" opt; do
 		s) 
 			studentfile=$OPTARG
 			;;
-		c) 
-			class=$OPTARG
-			;;
 		*) 
 			printf "Invalid option was given\n"
 			showUsage
@@ -30,7 +27,7 @@ while getopts ":i:t:s:c:" opt; do
 	esac
 done
 
-if [ ! $instructor ] || [ ! $tag ] || [ ! $studentfile ] || [ ! $class ]; then
+if [ ! $instructor ] || [ ! $tag ] || [ ! $studentfile ]; then
 	if [ ! $instructor ]; then
 		printf "Missing argument -i <instructor>\n"
 	fi
@@ -43,38 +40,23 @@ if [ ! $instructor ] || [ ! $tag ] || [ ! $studentfile ] || [ ! $class ]; then
 		printf "Missing argument -s </path/to/studentfile>\n"
 	fi
 
-	if [ ! $class ]; then
-		printf "Missing argument -c <classname>\n"
-	fi
-
 	showUsage
 	exit 1
 fi
 
-destination="$sourceRoot/$instructor/$class/submissions"
+destination="$sourceRoot/$instructor/homework"
 
 if [ ! -d $destination ]; then
-	printf "%s does not exist." "$destination"
-	read -p "Would you like to create it? (y/n)" response
-	case $response in 
-		y )
-			mkdir -p $destination
-			chown -R "$instructor:$INSTRUCTOR_GROUP" $destination
-			;;
-		n )
-			showUsage
-			exit 1
-			;;
-		* )
-			showUsage
-			exit 1
-			;;
-	esac
+	printf "Creating %s\n" "$destination"
+	mkdir -p $destination
 fi
 
+touch "$sourceRoot/$instructor/homework/log.tsv"
 while read student; do
-	find $sourceRoot/$student/$class/submit -name $tag* -exec cp {} $destination \;
+	if ls -U $sourceRoot/$student/submit/$tag* 1> /dev/null 2>&1; then
+		find $sourceRoot/$student/submit -name $tag* -exec cp {} $destination \;
+	else
+		printf "%s\t%s\n" "$student $tag" >> "$sourceRoot/$instructor/homework/log.tsv"
+	fi
 done < $studentfile
 
-chown -R "$instructor:$INSTRUCTOR_GROUP" $destination
-chmod -R 770 $destination

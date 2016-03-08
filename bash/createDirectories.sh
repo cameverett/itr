@@ -6,16 +6,13 @@ permissions="770"
 
 showUsage()
 {
-	printf "Usage: bash -i <your username> createDirectories.sh -c <classname> -s </path/to/studentfile>\n";
+	printf "Usage: bash -i <your username> createDirectories.sh -s </path/to/studentfile>\n";
 }
 
 while getopts ":i:c:s:" opt; do
 	case $opt in
 		i )
 			INSTRUCTOR_HOME_DIR="/home/$OPTARG"
-			;;
-		c ) 
-			class=$OPTARG
 			;;
 		s ) 
 			studentfile=$OPTARG
@@ -26,24 +23,22 @@ while getopts ":i:c:s:" opt; do
 	esac
 done
 
-if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f $studentfile ] || [ ! $class ]; then
+if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f $studentfile ]; then
 			showUsage
 			exit 1
 fi
 
-mkdir -p $INSTRUCTOR_HOME_DIR/$class/{submissions,mynotes,returned}
-chown -R "$instructor:$group" $INSTRUCTOR_HOME_DIR/$class
-chmod -R $permissions $INSTRUCTOR_HOME_DIR/$class
+mkdir -p $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned}
 
 while read student; do
 	STUDENT_HOME_DIR="$sourceRoot/$student"
-	mkdir -p $STUDENT_HOME_DIR/$class/{submit,returned,mynotes}
-	chown -R "$student:$group" $STUDENT_HOME_DIR/$class 
+	mkdir -p $STUDENT_HOME_DIR/{submit,returned,mynotes}
+	chown -R "$student:$group" $STUDENT_HOME_DIR/
 
 	if \
-	[ -d $STUDENT_HOME_DIR/$class/submit ] && \
-	[ -d $STUDENT_HOME_DIR/$class/returned ] && \
-	[ -d $STUDENT_HOME_DIR/$class/mynotes ];
+	[ -d $STUDENT_HOME_DIR/submit ] && \
+	[ -d $STUDENT_HOME_DIR/returned ] && \
+	[ -d $STUDENT_HOME_DIR/mynotes ];
 	then
 		printf "Directories created successfully for $student\n"
 	else
