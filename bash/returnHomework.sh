@@ -1,7 +1,7 @@
 sourceRoot="/home"
 destinationRoot="/home"
 group="instructors"
-permissions="770"
+securityToken="770"
 
 flag="_com";
 
@@ -55,6 +55,8 @@ if [ ! -d $path ]; then
 fi
 
 while read student; do	
-	#echo "$path$student"
 	find "$path$student" -name *$flag* -exec cp -f {} "$destinationRoot/$student/returned" \;
+	chown "$student:$group" "$destinationRoot/$student/returned"
+	chmod "$securityToken" "$destinationRoot/$student/returned"
 done < $studentfile
+
