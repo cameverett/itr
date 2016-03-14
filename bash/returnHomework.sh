@@ -1,9 +1,7 @@
 sourceRoot="/home"
 destinationRoot="/home"
 group="instructors"
-securityToken="770"
-
-flag="_com";
+permissions="770"
 
 while getopts ":i:s:p:f:" opt; do
 	case $opt in
@@ -25,38 +23,21 @@ if [[ ! $instructor ]] || [[ ! -f $studentfile ]]; then
 fi	
 
 if [ $path ]; then
-	path="$sourceRoot/$instructor/homework/$path/"
+	path="$sourceRoot/$instructor/homework/$path"
 else
-	path="$sourceRoot/$instructor/homework/"
+	path="$sourceRoot/$instructor/homework"
 fi
 
 
 
-if [ ! -d $path ]; then
-	printf "%s does not exist." "$path"
-	read -p "Would you like to create it? (y/n)" response
-	case $response in
-		y ) 
-			mkdir -p $path
-			;;
-
-		n ) 
-			showUsage
-			exit 1
-			;;
-
-		* )
-			showUsage
-			exit 1
-			;;
-
-	esac
-
+if [ ! -d "$path/" ]; then
+	printf "%s does not exist." "$path/"
+	exit 1
 fi
 
 while read student; do	
-	find "$path$student" -name *$flag* -exec cp -f {} "$destinationRoot/$student/returned" \;
-	chown "$student:$group" "$destinationRoot/$student/returned"
-	chmod "$securityToken" "$destinationRoot/$student/returned"
+	cp $path/$student/$flag* "$destinationRoot/$student/returned" 2> /dev/null
+	chown -R "$student:$group" "$destinationRoot/$student/returned"
+	chmod -R "$permissions" "$destinationRoot/$student/returned"
 done < $studentfile
 

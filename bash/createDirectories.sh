@@ -9,9 +9,10 @@ showUsage()
 	printf "Usage: bash -i <your username> createDirectories.sh -s </path/to/studentfile>\n";
 }
 
-while getopts ":i:c:s:" opt; do
+while getopts ":i:s:" opt; do
 	case $opt in
 		i )
+			instructor=$OPTARG
 			INSTRUCTOR_HOME_DIR="/home/$OPTARG"
 			;;
 		s ) 
@@ -28,12 +29,15 @@ if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f $studentfile ]; then
 			exit 1
 fi
 
-mkdir -p $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned}
+mkdir -p $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned,homework}
+chown "$instructor:$group" $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned,homework}
+chmod "740" $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned,homework}
 
 while read student; do
 	STUDENT_HOME_DIR="$sourceRoot/$student"
 	mkdir -p $STUDENT_HOME_DIR/{submit,returned,mynotes}
 	chown -R "$student:$group" $STUDENT_HOME_DIR/
+	mkdir -p "$INSTRUCTOR_HOME_DIR/returned/$student"
 
 	if \
 	[ -d $STUDENT_HOME_DIR/submit ] && \
