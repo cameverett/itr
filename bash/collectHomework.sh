@@ -49,8 +49,6 @@ destination="$sourceRoot/$instructor/homework"
 if [ ! -d $destination ]; then
 	printf "Creating %s\n" "$destination"
 	mkdir -p $destination
-	#chown -R "$instructor:$group" $destination
-	#chmod -R "740" "$destination"
 fi
 
 touch "$destination/log.tsv"
@@ -58,12 +56,8 @@ while read student; do
 	if ls -U $sourceRoot/$student/submit/$tag* 1> /dev/null 2>&1; then
 		mkdir -p $destination/$student
 		cp $sourceRoot/$student/submit/$tag* $destination/$student
-		#chown -R "$instructor:$group" $destination/$student
-		#chmod -R "740" $destination/$student
 	else
 		printf "%s\t%s\n" "$student" "$tag" >> "$sourceRoot/$instructor/homework/log.tsv"
-		#chown -R "$instructor:$group" $destination
-		#chmod -R 740 $destination
 	fi
 done < $studentfile
 
