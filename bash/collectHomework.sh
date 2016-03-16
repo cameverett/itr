@@ -61,7 +61,7 @@ while read student; do
 		#chown -R "$instructor:$group" $destination/$student
 		#chmod -R "740" $destination/$student
 	else
-		printf "%s\t%s\n" "$student $tag" >> "$sourceRoot/$instructor/homework/log.tsv"
+		printf "%s\t%s\n" "$student" "$tag" >> "$sourceRoot/$instructor/homework/log.tsv"
 		#chown -R "$instructor:$group" $destination
 		#chmod -R 740 $destination
 	fi
