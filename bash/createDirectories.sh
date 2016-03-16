@@ -50,3 +50,5 @@ while read student; do
 	fi
 done < $studentfile
 
+chown -R "$instructor:$group" $INSTRUCTOR_HOME_DIR/returned
+chmod -R 740 $INSTRUCTOR_HOME_DIR/returned
