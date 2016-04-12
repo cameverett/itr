@@ -46,7 +46,7 @@ case $action in
 		sudo bash $HOME/itr/bash/collectHomework.sh -i $Iflag -s $Sflag -t $Tflag
 		;;
 	create)
-		sudo bash $HOME/itr/bash/createDirectories.sh -a $Aflag -s $Sflag
+		sudo bash $HOME/itr/bash/createDirectories.sh -i $Aflag -s $Sflag
 		;;
 	return)
 		sudo bash $HOME/itr/bash/returnHomework.sh -i $Iflag -s $Sflag -p $Pflag -f $Fflag
