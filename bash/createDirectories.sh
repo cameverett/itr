@@ -6,7 +6,7 @@ permissions="770"
 
 showUsage()
 {
-	printf "Usage: bash -i <your username> createDirectories.sh -s </path/to/studentfile>\n";
+	printf "Usage: bash createDirectories.sh -i <your username> -s </path/to/studentfile>\n";
 }
 
 while getopts ":i:s:" opt; do
