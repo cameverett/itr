@@ -47,7 +47,7 @@ case $action in
 		sudo bash $HOME/itr/bash/collectHomework.sh -i $Iflag -s $Sflag -t $Tflag
 		;;
 	remove)
-		sudo bash $HOME/itr/cleanup.sh
+		bash $HOME/itr/cleanup.sh
 		;;
 	create)
 		sudo bash $HOME/itr/bash/createDirectories.sh -i $Iflag -s $Sflag
