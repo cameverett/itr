@@ -6,7 +6,7 @@ permissions="770"
 
 showUsage()
 {
-	printf "Usage: bash createDirectories.sh -i <your username> -s </path/to/studentfile>\n";
+	printf "Usage: classman create -i <your username> -s </path/to/studentfile>\n";
 }
 
 while getopts ":i:s:" opt; do
@@ -24,9 +24,9 @@ while getopts ":i:s:" opt; do
 	esac
 done
 
-if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f $studentfile ]; then
-			showUsage
-			exit 1
+if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f "$studentfile" ]; then
+	showUsage
+	exit 1
 fi
 
 mkdir -p $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned,homework}

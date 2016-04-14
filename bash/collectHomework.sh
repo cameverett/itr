@@ -5,7 +5,7 @@ INSTRUCTOR_GROUP="instructors"
 
 showUsage()
 {
-	printf "Usage: class_collect -i <your_username> -t <tag> -s </path/to/studentfile\n";
+	printf "Usage: classman collect -i <your_username> -t <tag> -s </path/to/studentfile\n";
 }
 
 while getopts ":i:t:s:" opt; do
@@ -27,7 +27,7 @@ while getopts ":i:t:s:" opt; do
 	esac
 done
 
-if [ ! $instructor ] || [ ! $tag ] || [ ! $studentfile ]; then
+if [ ! -f "$instructor" ] || [ ! $tag ] || [ ! -f "$studentfile" ]; then
 	if [ ! $instructor ]; then
 		printf "Missing argument -i <instructor>\n"
 	fi
