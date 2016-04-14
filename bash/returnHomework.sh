@@ -9,7 +9,7 @@ while getopts ":i:s:p:f:" opt; do
 	s ) studentfile=$OPTARG;;
 	p ) path=$OPTARG;;
 	f ) flag=$OPTARG;;
-	* ) printf "Usage bash returnHomework.sh -s </path/to/studentfile> -i <your_username> -f <flag> -p </path/in/your/homework/directory\n"
+	* ) printf "Usage classman return -s </path/to/studentfile> -i <your_username> -f <flag> -p </path/in/your/homework/directory\n"
 	esac
 done
 	
