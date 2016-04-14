@@ -2,22 +2,22 @@
 
 showUsage() {
 	printf "Usage:\n"
-	printf "classman assign -a </path/to/assignment> -s </path/to/studentfile>"
-	printf "classman collect -i <instructor> -s </path/to/studentfile> -t <tag>"
-	printf "classman create -i <instructor> -s </path/to/studentfile>"
-	printf "classman return -i <instructor> -s </path/to/studentfile> -p </path/to/assignments> -f <tag>"
-	printf "classman help <action>\n"
+	printf "\tclassman assign -a </path/to/assignment> -s </path/to/studentfile>\n"
+	printf "\tclassman collect -i <instructor> -s </path/to/studentfile> -t <tag>\n"
+	printf "\tclassman create -i <instructor> -s </path/to/studentfile>\n"
+	printf "\tclassman return -i <instructor> -s </path/to/studentfile> -p </path/to/assignments> -f <tag>\n"
+	printf "\tclassman help <action>\n"
 	exit 1
 }
 
 getHelpPage() {
 	case $1 in
-		assign) echo "Getting assign help page" ;;
-		collect) echo "Getting collect help page" ;;
-		create) echo "Getting create help page" ;;
-		return) echo "Getting return help page" ;;
-		"" | classman) echo "Getting classman help page" ;;
-		*) echo "No man page for that" ;;
+		assign) printf "Getting assign help page\n" ;;
+		collect) printf "Getting collect help page\n" ;;
+		create) printf "Getting create help page\n" ;;
+		return) printf "Getting return help page\n" ;;
+		"" | classman) printf "Getting classman help page\n" ;;
+		*) printf "No man page for that\n" ;;
 	esac
 }
 
