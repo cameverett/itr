@@ -1,28 +1,26 @@
-.TH createDirectories.sh 1 "15 April 2016" "itr/bash/createDirectories.sh" "Manual: classman create"
+.TH assignHomework.sh 1 "16 April 2016" "itr/bash/assignHomework.sh" "Manual: classman assign"
 
 .SH NAME
-classman create \- create directories for students and instructor
+classman assign \- copies file or directory into student's $HOME/assignments directory.
 
 .SH SYNOPSIS
-classman create -s </path/to/studentfile>
+classman assign -s </path/to/studentfile> -a </path/to/assignemnt>
 
 .SH DESCRIPTION
-.B classman create
-creates 3 directories in the students
-.B $HOME 
-directory(
-.B submit, mynotes, returned
-).
-Students will place their assignments in the submit folder to be collected by instructors. The mynotes folder is where instructors send feedback or supplementary content for students to access. The returned folder is where students will receive back graded assignments from instructors who are using the IT-R package.
+.B classman assign
+copies a file or directory given by the
+.B -a
+option to each student in the file provided by the
+.B -s
+option. Permissions are changed to 770 on the assignment file so that students can read, write, and execute any file including PDFs and R Studio projects.
 .PP
-The file executed is found at itr/bash/createDirectories.sh
+The file executed is found at itr/bash/assignHomework.sh
 
 .SH OPTIONS
 .IP -s
-Path to the file containing a list of student usernames that directories will be created for
-.B if and only if
-.I they do not already exist.
-and sets users in the instructors group as owners of the student's $HOME directory.
+Path to the file containing a list of student usernames that will be receive the assignment file or directory.
+.IP -a
+Path to the file to be copied to a student's $HOME/assignments directory
 .SH SEE ALSO
 .B classman help assign
 .PP
