@@ -18,15 +18,17 @@ if [[ ! $instructor ]] || [[ ! -f $studentfile ]]; then
 		printf "Missing Argument -i <instructor_username>\n"
 	elif [[ ! -f $studentfile ]]; then
 		printf "Missing Argument -s </path/to/studentfile>\n"
+	elif [[ ! $flag ]]; then
+		printf "Missing Argument -f <tag to search for assignment>\n"
 	fi
 	exit 1
 fi	
 
 pathRoot="$sourceRoot/$instructor/homework"
-if [[ $pathExtension ]]; then
-	pathExtension="$pathExtension/"
-else
+if [[ $pathExtension == "-f" ]]; then # TODO not sure why the p option defaults to "-f" when -p value not given.
 	pathExtension=""
+else
+	pathExtension="$pathExtension/"
 fi
 
 while read student; do	
