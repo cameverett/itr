@@ -23,25 +23,19 @@ destinationRoot="/home"
 group="instructors"
 permissions="770"
 
-if [[ -f $studentfile ]]; then
-	printf "%s was not found or is not a file.\n" "$studentfile"
-	showUsage
-	exit 1
-fi
-
 if [[ -d $assignment ]]; then
 	while read student; do
 	mkdir -p "$destinationRoot/$student/assignments"
 	cp -r $assignment "$destinationRoot/$student/assignments"
-	chmod "$permissions" "$destinationRoot/$student/assignments"
-	chown "$student":"$group" "$destinationRoot/$student/assignments"
+	chmod -R "$permissions" "$destinationRoot/$student/assignments"
+	chown -R "$student":"$group" "$destinationRoot/$student/assignments"
 	done < $studentfile
 elif [[ -f $assignment ]]; then
 	while read student; do
 	mkdir -p "$destinationRoot/$student/assignments"
 	cp $assignment "$destinationRoot/$student/assignments"
-	chmod "$permissions" "$destinationRoot/$student/assignments"
-	chown "$student":"$group" "$destinationRoot/$student/assignments"
+	chmod -R "$permissions" "$destinationRoot/$student/assignments"
+	chown -R "$student":"$group" "$destinationRoot/$student/assignments"
 	done < $studentfile
 else
 	printf "%s is not a file or directory\n" "$assignment"
