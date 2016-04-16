@@ -24,7 +24,7 @@ while getopts ":i:s:" opt; do
 	esac
 done
 
-if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f "$studentfile" ]; then
+if [[ ! $INSTRUCTOR_HOME_DIR ]] || [[ ! -f $studentfile ]]; then
 	showUsage
 	exit 1
 fi
