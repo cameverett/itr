@@ -12,12 +12,29 @@ showUsage() {
 
 getHelpPage() {
 	case $1 in
-		assign) printf "Getting assign help page\n" ;;
-		collect) printf "Getting collect help page\n" ;;
-		create) printf "Getting create help page\n" ;;
-		return) printf "Getting return help page\n" ;;
-		"" | classman) printf "Getting classman help page\n" ;;
-		*) printf "No man page for that\n" ;;
+		assign)
+			man ./classman_assign
+			printf "Getting assign help page\n"
+			;;
+		collect)
+			man ./classman_collect
+			printf "Getting collect help page\n"
+			;;
+		create) 
+			man ./classman_create
+			printf "Getting create help page\n"
+			;;
+		return)
+			man ./classman_return
+			printf "Getting return help page\n"
+			;;
+		"" | classman)
+			man ./classman_help
+			printf "Getting classman help page\n"
+			;;
+		*)
+			printf "No man page for that action\n"
+			;;
 	esac
 }
 

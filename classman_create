@@ -1,0 +1,42 @@
+.TH createDirectories.sh 1 "15 April 2016" "itr/bash/createDirectories.sh" "Manual: classman create"
+
+.SH NAME
+classman create \- create directories for students and instructor
+
+.SH SYNOPSIS
+classman create -s </path/to/studentfile> -i <username>
+
+.SH DESCRIPTION
+.B classman create
+creates 3 directories in the students
+.B $HOME 
+directory(
+.B submit, mynotes, returned
+).
+Students will place their assignments in the submit folder to be collected by instructors. The mynotes folder is where instructors send feedback or supplementary content for students to access. The returned folder is where students will receive back graded assignments from instructors who are using the IT-R package.
+.PP
+The file executed is found at itr/bash/createDirectories.sh
+
+.SH OPTIONS
+.IP -i
+Username
+(
+.B $USER
+) 
+of the user calling the script.
+.IP -s
+Path to the file containing a list of student usernames that directories will be created for
+.B if and only if
+.I they do not already exist.
+and sets users in the instructors group as owners of the student's $HOME directory.
+.SH SEE ALSO
+.B classman help assign
+.PP
+.B classman help collect
+.PP
+.B classman help create
+.PP
+.B classman help return
+
+.SH AUTHOR
+Cameron Everett (cameronjeverett@gmail.com)

@@ -1,0 +1,47 @@
+.TH returnHomework.sh 1 "16 April 2016" "itr/bash/returnHomework.sh" "Manual: classman return"
+
+.SH NAME
+classman return \- return homework to students in their /home/<student>/returned folder
+
+.SH SYNOPSIS
+classman return -s </path/to/studentfile> -i <instructor> -f <flag> -p <directory within $HOME/<instructor>/homework/>
+
+.SH DESCRIPTION
+.B classman return
+searches in 
+.B $HOME
+/homework/ directory of a professor and returns files containing the flag to students list in a txt file given in the -s option. The files are copied into the
+.B returned
+directory found in a student's $HOME directory.
+
+.PP
+The file executed is found at itr/bash/returnHomework.sh
+
+.SH OPTIONS
+.IP -s
+Path to the file containing a list of student usernames that directories will be created for
+.B if and only if
+.I they do not already exist.
+and sets users in the instructors group as owners of the student's $HOME directory.
+.IP -i
+Username
+(
+.B $USER
+) 
+of the user calling the script.
+.IP -f
+Flag used to find and choose assingments in a given directory(e.g. HW01). 
+.IP -p
+Provides where to look in the /home/<instructor>/homework/{student0, student1, ...} directories to find assignments to be returned. It is optional and will default to searching in /home/<instructor>/homework/{student,...}
+
+.SH SEE ALSO
+.B classman help assign
+.PP
+.B classman help collect
+.PP
+.B classman help create
+.PP
+.B classman help return
+
+.SH AUTHOR
+Cameron Everett (cameronjeverett@gmail.com)
