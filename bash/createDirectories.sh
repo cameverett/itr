@@ -24,9 +24,9 @@ while getopts ":i:s:" opt; do
 	esac
 done
 
-if [ ! $INSTRUCTOR_HOME_DIR ] || [ ! -f $studentfile ]; then
-			showUsage
-			exit 1
+if [[ ! $INSTRUCTOR_HOME_DIR ]] || [[ ! -f $studentfile ]]; then
+	showUsage
+	exit 1
 fi
 
 mkdir -p $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned,homework}

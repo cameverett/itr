@@ -5,7 +5,7 @@ INSTRUCTOR_GROUP="instructors"
 
 showUsage()
 {
-	printf "Usage: classman collect -i <your_username> -t <tag> -s </path/to/studentfile>\n";
+	printf "Usage: classman collect -i <your_username> -t <tag> -s </path/to/studentfile\n";
 }
 
 while getopts ":i:t:s:" opt; do
@@ -27,16 +27,16 @@ while getopts ":i:t:s:" opt; do
 	esac
 done
 
-if [ ! $instructor ] || [ ! $tag ] || [ ! $studentfile ]; then
-	if [ ! $instructor ]; then
+if [[ ! $instructor ]] || [[ ! $tag ]] || [[ ! -f $studentfile ]]; then
+	if [[ ! $instructor ]]; then
 		printf "Missing argument -i <instructor>\n"
 	fi
 
-	if [ ! $tag ]; then
+	if [[ ! $tag ]]; then
 		printf "Missing argument -t <searchtag>\n"
 	fi
 
-	if [ ! $studentfile ]; then
+	if [[ ! $studentfile ]]; then
 		printf "Missing argument -s </path/to/studentfile>\n"
 	fi
 
@@ -46,7 +46,7 @@ fi
 
 destination="$sourceRoot/$instructor/homework"
 
-if [ ! -d $destination ]; then
+if [[ ! -d $destination ]]; then
 	printf "Creating %s\n" "$destination"
 	mkdir -p $destination
 fi

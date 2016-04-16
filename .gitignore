@@ -1,5 +1,4 @@
 .Rproj.user
 .Rhistory
 .RData
-clearFakeUsers.sh
-createFakeUsers.sh
+*.swp
