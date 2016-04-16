@@ -4,7 +4,7 @@
 classman collect \- collect assignments in students' $HOME/submit folder
 
 .SH SYNOPSIS
-classman collect -s </path/to/studentfile> -i <username> -t <tag>
+classman collect -s </path/to/studentfile> -t <tag>
 
 .SH DESCRIPTION
 .B classman collect
@@ -26,12 +26,6 @@ student0	hw02
 The file executed is found at itr/bash/collectHomework.sh
 
 .SH OPTIONS
-.IP -i
-Username
-(
-.B $USER
-) 
-of the user calling the script.
 .IP -s
 Path to the file containing a list of student usernames that the directory $HOME/submit will be searched for the assignment.
 .IP -t

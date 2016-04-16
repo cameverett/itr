@@ -4,7 +4,7 @@
 classman create \- create directories for students and instructor
 
 .SH SYNOPSIS
-classman create -s </path/to/studentfile> -i <username>
+classman create -s </path/to/studentfile>
 
 .SH DESCRIPTION
 .B classman create
@@ -18,12 +18,6 @@ Students will place their assignments in the submit folder to be collected by in
 The file executed is found at itr/bash/createDirectories.sh
 
 .SH OPTIONS
-.IP -i
-Username
-(
-.B $USER
-) 
-of the user calling the script.
 .IP -s
 Path to the file containing a list of student usernames that directories will be created for
 .B if and only if

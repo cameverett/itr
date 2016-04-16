@@ -25,9 +25,9 @@ See help pages for each action for possible options to be called by scripts (bel
 .PP
 Examples
 .PP
-classman assign -s </path/to/studentfile> -i <instructor_username> -p <directory within $HOME/<instructor>/assign> -f <flag>
+classman assign -s </path/to/studentfile> -p <directory within $HOME/<instructor>/assign> -f <flag>
 .PP
-classman create -s </path/to/studentfile> -i <instructor_username>
+classman create -s </path/to/studentfile>
 
 .SH SEE ALSO
 .B classman help assign

@@ -4,7 +4,7 @@
 classman return \- return homework to students in their /home/<student>/returned folder
 
 .SH SYNOPSIS
-classman return -s </path/to/studentfile> -i <instructor> -f <flag> -p <directory within $HOME/<instructor>/homework/>
+classman return -s </path/to/studentfile> -f <flag> -p <directory within $HOME/<instructor>/homework/>
 
 .SH DESCRIPTION
 .B classman return
@@ -23,12 +23,6 @@ Path to the file containing a list of student usernames that directories will be
 .B if and only if
 .I they do not already exist.
 and sets users in the instructors group as owners of the student's $HOME directory.
-.IP -i
-Username
-(
-.B $USER
-) 
-of the user calling the script.
 .IP -f
 Flag used to find and choose assingments in a given directory(e.g. HW01). 
 .IP -p
