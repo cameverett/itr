@@ -4,7 +4,7 @@ showUsage () {
 	printf "Usage: classman assign -s </path/to/studentfile> -a </path/to/assignment>\n"
 }
 
-while getopts ":s:f:d:" opt; do
+while getopts ":s:a:" opt; do
 	case $opt in
 	s)
 		studentfile=$OPTARG
