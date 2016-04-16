@@ -24,7 +24,7 @@ group="instructors"
 permissions="770"
 
 if [[ -f $studentfile ]]; then
-	printf "%s was not found or is not a file." "$studentfile"
+	printf "%s was not found or is not a file.\n" "$studentfile"
 	showUsage
 	exit 1
 fi
