@@ -40,6 +40,7 @@ getHelpPage() {
 
 action=$1
 helpPage=$2
+instructor=$USER
 
 # Need to shift the positional arguments so that getopts can start from $1
 shift
@@ -74,7 +75,7 @@ case $action in
 		sudo bash $HOME/itr/bash/assignHomework.sh -a $Aflag -s $Sflag
 		;;
 	collect)
-		sudo bash $HOME/itr/bash/collectHomework.sh -i $Iflag -s $Sflag -t $Tflag
+		sudo bash $HOME/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
 		;;
 	help)
 		getHelpPage $helpPage
@@ -83,10 +84,10 @@ case $action in
 		bash $HOME/itr/cleanup.sh
 		;;
 	create)
-		sudo bash $HOME/itr/bash/createDirectories.sh -i $Iflag -s $Sflag
+		sudo bash $HOME/itr/bash/createDirectories.sh -i $instructor -s $Sflag
 		;;
 	return)
-		sudo bash $HOME/itr/bash/returnHomework.sh -i $Iflag -s $Sflag -p $Pflag -f $Fflag
+		sudo bash $HOME/itr/bash/returnHomework.sh -i $instructor -s $Sflag -p $Pflag -f $Fflag
 		;;
 	* | help)
 		showUsage
