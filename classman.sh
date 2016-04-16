@@ -45,11 +45,8 @@ instructor=$USER
 # Need to shift the positional arguments so that getopts can start from $1
 shift
 
-while getopts ":i:t:s:p:f:a:" opt; do
+while getopts ":t:s:p:f:a:" opt; do
 	case $opt in
-		i)
-			Iflag=$OPTARG
-			;;
 		t)
 			Tflag=$OPTARG
 			;;
