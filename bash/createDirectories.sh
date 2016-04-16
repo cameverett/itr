@@ -29,9 +29,9 @@ if [[ ! $INSTRUCTOR_HOME_DIR ]] || [[ ! -f $studentfile ]]; then
 	exit 1
 fi
 
-mkdir -p $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned,homework}
-chown "$instructor:$group" $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned,homework}
-chmod "740" $INSTRUCTOR_HOME_DIR/{submissions,mynotes,returned,homework}
+mkdir -p $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
+chown "$instructor:$group" $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
+chmod "740" $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
 
 while read student; do
 	STUDENT_HOME_DIR="$sourceRoot/$student"
