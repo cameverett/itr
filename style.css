@@ -7,8 +7,18 @@ body {
 
 #main {
   padding: 2em;
+  margin: 0;
   background-color: #fff;
   border-radius: 0.5em;
+}
+
+#clone_options_wrapper {
+  display: block;
+  padding-bottom: 2em;
+}
+
+.clone_option {
+  display:inline-block;
 }
 
 ul {
@@ -24,7 +34,7 @@ h2 strong {
 }
 
 code {
-  display: inline-block;
+  display: inline;
   padding: 0.25em;
   margin: 0 0.15em;
   color: #123;
