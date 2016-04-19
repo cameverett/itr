@@ -1,6 +1,13 @@
 body {
+  font-family: 'Helvetica', sans-serif;
   background-color: #c35;
   margin-bottom: 0.5rem;
+}
+
+#main {
+  padding: 2em;
+  background-color: #fff;
+  border-radius: 0.5em;
 }
 
 ul {
@@ -15,11 +22,6 @@ ul {
   font-weight: bold;
 }
 
-#main {
-  padding-bottom: 2em;
-  background-color: #fff;
-}
-
 hr {
   border: 0.1em solid #000;
 }
@@ -30,4 +32,11 @@ h2 strong {
 
 code {
   display: inline-block;
+  padding: 0.25em;
+  margin: 0 0.15em;
+  font-family: "Comic Sans MS", sans-serif;
+  font-size: 0.7em;
+  color: #123;
+  background-color: rgb(255, 182, 193);/*#ffb6c1;*/
+  background-color: rgb(255, 182, 193, 0.2);
 }
