@@ -68,18 +68,18 @@
 			<strong>Instructor Toolkit</strong>
 		</h2>
 		<hr>
-		<h3 id="assign">Assign (work in progress)</h3>
-		<p>Copy a file or folder and place it in <code>/home/student/class/assignments</code></p>
-		<pre><code>class_assign -c &ltclass&gt -s &lt/path/to/students.txt&gt -a &lt/path/to/fileorfolder&gt</code></pre>
-		<h3 id="collect">Collect (ready for testing)</h3>
-		<p>Find and copy student work into your <code>/home/&ltinstructor&gt/&ltclass&gt/submissions</code> folder. The program will find files according to the tag (-t) option given.</p>
-		<pre><code>class_collect -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/students.txt&gt</code></pre>
-		<h3 id="create">Create (ready for testing)</h3>
-		<p>Creates directories for students <code>/home/&ltstudent&gt/&ltclass&gt/{submit,returned,mynotes}</code>.</p>
-		<pre><code>class_create -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/students.txt&gt</code></pre>
-		<h3 id="return">Return (work in progress)</h3>
-		<p>Copies files placed in <code>/home/&ltinstructor&gt/&ltclass&gt/return</code> folder to your students' <code>/home/&ltstudent&gt/&ltclass&gt/returned</code> folder.</p>
-		<pre><code>class_return -i &ltyour_username&gt -c &ltclass&gt -s &lt/path/to/students.txt&gt</code></pre>
+		<h3 id="assign">Assign</h3>
+		<p>Copy a file or folder and place it in <code>/home/student/assignments</code></p>
+		<pre><code>classman assign -s &lt/path/to/students.txt&gt -a &lt/path/to/fileorfolder&gt</code></pre>
+		<h3 id="collect">Collect</h3>
+		<p>Find and copy student work into your <code>/home/&ltinstructor&gt/homework</code> folder. The program will find files according to the tag (-t) option given.</p>
+		<pre><code>classman collect -s &lt/path/to/students.txt&gt -t &lttag&gt</code></pre>
+		<h3 id="create">Create</h3>
+		<p>Creates directories for students <code>/home/&ltstudent&gt/{submit,returned,mynotes}</code>.</p>
+		<pre><code>classman create -s &lt/path/to/students.txt&gt</code></pre>
+		<h3 id="return">Return</h3>
+		<p>Copies files placed in <code>/home/&ltinstructor&gt/return</code> folder to your students' <code>/home/&ltstudent&gt/returned</code> folder.</p>
+		<pre><code>classman return -s &lt/path/to/students.txt&gt -f &ltflag&gt</code></pre>
 
 	</div>
 </div>
