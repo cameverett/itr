@@ -1,0 +1,56 @@
+body {
+  background-color: #c35;
+  margin-bottom: 0.5rem;
+}
+
+ul {
+  list-style: square;
+}
+
+.col-md-3 {
+  color: #fff;
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.col-md-3 a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+col-md-3 a:visited {
+  color: #fff;
+}
+
+.col-md-3 a:hover {
+  color: #fff;
+}
+
+.col-md-9 {
+  background-color: #fff;
+}
+
+#nav {
+  padding-bottom: 0.15em;
+}
+
+#nav h2 {
+  font-weight: bold;
+}
+
+#main {
+  padding-bottom: 2em;
+}
+
+hr {
+  border: 0.1em solid #000;
+}
+
+h2 strong {
+  background-color: #fff2e6;
+}
+
+code {
+  display: inline-block;
+}
