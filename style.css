@@ -2,6 +2,7 @@ body {
   font-family: 'Helvetica', sans-serif;
   background-color: #c35;
   margin-bottom: 0.5rem;
+  font-size: 1em;
 }
 
 #main {
@@ -12,14 +13,6 @@ body {
 
 ul {
   list-style: square;
-}
-
-#nav {
-  padding-bottom: 0.15em;
-}
-
-#nav h2 {
-  font-weight: bold;
 }
 
 hr {
@@ -34,9 +27,13 @@ code {
   display: inline-block;
   padding: 0.25em;
   margin: 0 0.15em;
-  font-family: "Comic Sans MS", sans-serif;
-  font-size: 0.7em;
   color: #123;
-  background-color: rgb(255, 182, 193);/*#ffb6c1;*/
+  font-family: "Helvetica", sans-serif;
+  font-size: 0.9em;
+  border-style: solid;
+  border-width: thin;
+  border-color: #a54;
+  border-radius: 0.2em;
+  background-color: rgb(255, 182, 193);
   background-color: rgb(255, 182, 193, 0.2);
 }
