@@ -13,23 +13,23 @@ showUsage() {
 getHelpPage() {
 	case $1 in
 		assign)
-			man ./classman_assign
+			man $HOME/itr/classman_assign
 			printf "Getting assign help page\n"
 			;;
 		collect)
-			man ./classman_collect
+			man $HOME/itr/classman_collect
 			printf "Getting collect help page\n"
 			;;
 		create) 
-			man ./classman_create
+			man $HOME/itr/classman_create
 			printf "Getting create help page\n"
 			;;
 		return)
-			man ./classman_return
+			man $HOME/itr/classman_return
 			printf "Getting return help page\n"
 			;;
 		"" | classman)
-			man ./classman_help
+			man $HOME/itr/classman_help
 			printf "Getting classman help page\n"
 			;;
 		*)
