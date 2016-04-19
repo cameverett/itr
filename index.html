@@ -64,48 +64,6 @@
 
 		<hr>
 
-		<div>
-
-		<h3 id="sys_reset">Reset Environment</h3>
-		<p>
-			Create a text file with a list of all instructor usernames and another text file for all student usernames you want to remove in the test environment and <code>cd</code> into the cloned itr repository.
-		</p>
-			<div>
-			<code style="display:inline-block;">
-<pre>
-(e.g. /home/user/instructors.txt)
-
-instructor0
-instructor1
-instructor2
-instructor3
-instructor4
-</pre>
-			</code>
-
-			<code style="display: inline-block;">
-<pre>
-(e.g. /home/user/students.txt)
-
-student0
-student1
-student2
-student3
-student4
-</pre>
-			</code>
-
-			<p>
-			and then <code>cd /path/to/repo/itr</code>.
-			</p>
-
-			</p>
-			<strong>Warning</strong> This will permanently remove users in these files from the system.<br>
-			<p>
-			<code>sudo bash cleanup.sh -i &lt/path/to/instructors.txt&gt -s &lt/path/to/students.txt&gt</code>
-
-			</div>
-
 		<h2 id="instr_toolkit">
 			<strong>Instructor Toolkit</strong>
 		</h2>
