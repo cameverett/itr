@@ -14,11 +14,6 @@
 <div class="row">
 	<div id="nav" class="col-md-3">
 		<nav>
-		<h2><em><a href="#sys_admin">System Admin</a></em></h2>
-			<ul>
-				<li><a href="#sys_setup">Setup Environment</a></li>
-				<li><a href="#sys_reset">Reset Environment</a></li>
-			</ul>
 		<h2><em><a href="#instr_toolkit">Instructor Toolkit</a></em></h2>
 			<ul>
 				<li><a href="#assign">Assign</a></li>
@@ -35,78 +30,41 @@
 		<h3><strong>What is IT-R?</strong></h3>
 			<p>IT-R is a collection of bash scripts and R functions that allow instructors who use servers for teaching with R-Studio to more easily handle tasks such as assigning, collecting, and returning assignments.</p>
 
-		<h2 id="sys_admin">
-			<strong>System Admins</strong>
-		</h2>
 		<hr>
-		<h3 id="sys_setup">Setup Environment</h3>
-		<p>Login as a user with sudo privileges. Then clone the <a href="https://github.com/cameverett/itr/">GitHub Repository</a> on your machine.</p>
 
+		<h3 id="user_setup">Setup Environment</h3>
+		<p>Login and clone the IT-R package at this <a href="https://github.com/cameverett/itr/">GitHub Repository.</a></p>
+
+		<strong>SSH (preferred)</strong>
 		<p>
-			<strong>SSH (preferred)</strong>
-			<p>
-			<code>git clone git@github.com:cameverett/itr.git</code>
-			</p>
-			<p>or...</p>
-			<strong>HTTPS</strong>
-			<p>
-			<code>git clone https://github.com/cameverett/itr.git</code>
-			</p>
-
-			<p>
-				Create a text file with the list of all instructor usernames and another text file for all student usernames you want to setup in the test environment like so..
-			</p>
-			<div>
-			<code style="display:inline-block;">
-<pre>
-(e.g. /home/user/instructors.txt)
-
-instructor0
-instructor1
-instructor2
-instructor3
-instructor4
-</pre>
-			</code>
-
-			<code style="display: inline-block;">
-<pre>
-(e.g. /home/user/students.txt)
-
-student0
-student1
-student2
-student3
-student4
-</pre>
-			</code>
-
-			<p>
-			and then <code>cd /path/to/repo/itr</code>.
-			</p>
-
-			</div>
-
-			<p>
-				Now it is time to run the setup.sh script in the repository.
-			</p>
-
-			<p>
-				<code>ls .</code><br>
-				<code>sudo bash setup.sh -i /path/to/instructors.txt -s /path/to/students.txt -p bash/</code><br>
-			</p>
-
+		<code>git clone git@github.com:cameverett/itr.git</code>
+		</p>
+		<p>or...</p>
+		<strong>HTTPS</strong>
+		<p>
+		<code>git clone https://github.com/cameverett/itr.git</code>
 		</p>
 
-		<p>
-			Users will be created according to the usernames in the text file along with a password with a 1 appended to the username so that<br>
-			<br><code>username: instructor0</code><br><code>password: instructor01</code>
+		<hr>
 
+		<h3>Setting Up Commands</h3>
+		<p>
+			<code>cd</code> into the repository and run <code>bash setup.sh</code> in the terminal.
+		</p>
+		<p>
+			It's as simple as that! Run <code>classman help</code> to check if the
+			scripts have been setup properly. You should see a man page pop up in your
+			terminal.
+		</p>
+		<p>
+			If you do not see the man page and receive a message saying a script
+			cannot be found you will need to run
+			<code>source $HOME/.bash_aliases</code>.
 		</p>
 
-		<p>
-			You have now created a test environment of students and teachers. The instructors are given sudo privileges and are part of the instructors user group. Students are treated as regular users with limited permissions on the server.
-		</p>
+		<hr>
+
+		<div>
 
 		<h3 id="sys_reset">Reset Environment</h3>
 		<p>
