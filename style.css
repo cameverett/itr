@@ -40,7 +40,7 @@ code {
   color: #123;
   font-family: "Lucida Console", Monaco, monospace;
   font-size: 0.9em;
-  display: inline;
+  display: inline-block;
   margin: 0.25em;
   padding: 0.5em;
   border-style: solid;
