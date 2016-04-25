@@ -102,6 +102,9 @@ hr {
 	text-align: left;
 	background-color: #b5354e;
 	font-weight: bold;
+	border-bottom-left-radius: 0.75rem;
+	border-bottom-right-radius: 0.75rem;
+	padding-bottom: 1rem;
 }
 
 #nav-menu ul li {
@@ -146,7 +149,7 @@ hr {
 
 #clone_options_wrapper {
 	display: block;
-  padding-bottom: 2rem;
+	padding-bottom: 2rem;
 }
 
 #clone_option {
@@ -170,6 +173,8 @@ hr {
 		color: #fff;
 		text-align: center;
 		border-top-right-radius: 0.75rem;
+		border-bottom-left-radius: 0rem;
+		border-bottom-right-radius: 0rem;
 	}
 
 	#main-content {
