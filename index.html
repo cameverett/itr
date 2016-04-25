@@ -1,98 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>IT-R Package Manual</title>
+	<head>
+		<title>IT-R Online Manual</title>
+		<link rel="stylesheet" type="text/css" href="main.css" >
+	</head>
+	<body>
+		<div id="nav-menu">
+			<h2><a href="#main-content">IT-R Online Manual</a></h2>
+			<nav>
+				<ul>
+					<li><a href="#info">What is it?</a></li>
+					<li><a href="#clone">Getting Started</a></li>
+					<li><a href="#toolkit">Instructor Toolkit</a></li>
+					<li><a href="#debian">Debian Packaging</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div id="main-content">
+			<section id="info">
+				<h1>IT-R Class Manager</h1>
 
-	<link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
-</head>
-<body>
-	<div id="main">
-		<h1 id="top"><strong>IT-R Class Manager</strong></h1>
+				<br>
 
-		<p><strong><em>The online help manual is currently a work in progress.</em></strong></p>
-		<h2><strong>What is IT-R?</strong></h2>
-			<p>IT-R is a collection of bash scripts and R functions that allow instructors who use servers for teaching with R-Studio to more easily handle tasks such as assigning, collecting, and returning assignments.</p>
+				<h2>What is IT-R?</h2>
+				<p>IT-R is a collection of bash scripts and R functions that allow instructors who use servers for teaching with R-Studio to more easily handle tasks such as assigning, collecting, and returning assignments.</p>
+			</section>
 
-		<hr>
+			<hr>
 
-		<h2 id="user_setup">Setup Environment</h2>
-		<p>Login and clone the IT-R package from this
-			<a href="https://github.com/cameverett/itr/">GitHub Repository</a> into
-		your home directory.</p>
+			<section id="clone">
+				<h2>Setup Environment</h2>
+				<p>Login and clone the IT-R package from this
+					<a href="https://github.com/cameverett/itr/">GitHub Repository</a> into
+				your home directory.</p>
 
-		<div id="clone_options_wrapper">
-			<div class="clone_option" style="margin-right: 3.5em">
-				<h4><strong>SSH (preferred)</strong></h5>
-				<code>git clone git@github.com:cameverett/itr.git</code>
-			</div>
-			<div style="display:inline-block">
-				<span><strong>or...</strong></span>
-				<div class="clone_option" style="margin-left: 3.5em">
-					<h4><strong>HTTPS</strong></h4>
-					<code>git clone https://github.com/cameverett/itr.git</code>
+				<div id="clone_options_wrapper">
+					<div class="clone_option">
+						<h4>SSH (preferred)</h4>
+						<code>git clone git@github.com:cameverett/itr.git</code>
+					</div>
+					<br>
+					<div class="clone_option">
+						<h4>HTTPS</h4>
+						<code>git clone https://github.com/cameverett/itr.git</code>
+					</div>
 				</div>
-			</div>
+			</section>
+
+			<hr>
+
+			<section id="setup">
+				<h2>Setting Up Commands</h2>
+				<p>
+					<code>cd</code> into the repository and run <code>bash setup.sh</code> in the terminal.
+				</p>
+				<p>
+					It's as simple as that! Run <code>classman help</code> to check if the
+					scripts have been setup properly. You should see a man page pop up in your
+					terminal.
+				</p>
+				<p>
+					<strong>If you do not see the man page and receive a message saying a script
+					cannot be found you will need to run</strong>
+					<code>source $HOME/.bash_aliases</code>.
+				</p>
+			</section>
+
+			<hr>
+
+			<section id="toolkit">
+				<h2>
+					Instructor Toolkit
+				</h2>
+
+				<br>
+
+				<div class="tooltip">
+					<h3 id="collect">Collect</h3>
+					<p>
+						Find and copy student work into your
+						<code>/home/&ltinstructor&gt/homework</code> folder. The program will
+						find files according to the tag given to the -t option.
+					</p>
+					<code class="tool">classman collect -s &lt/path/to/students.in&gt -t &lttag&gt</code>
+				</div>
+
+				<div class="tooltipo">
+					<h3 id="create">Create</h3>
+					<p>Creates directories for students <code>/home/&ltstudent&gt/{submit,returned,mynotes}</code>.</p>
+					<code class="tool">classman create -s &lt/path/to/students.in&gt</code>
+				</div>
+
+				<div class="tooltip">
+					<h3 id="help">Help</h3>
+					<code class="tool">classman help &ltaction&gt</code>
+				</div>
+
+				<div class="tooltip">
+				<h3 id="publish">Publish</h3>
+					<p>Copy a file or folder and place it in <code>/home/student/assignments</code></p>
+					<code class="tool">classman publish -s &lt/path/to/students.in&gt -a &lt/path/to/assignment&gt</code>
+				</div>
+
+				<div class="tooltip">
+					<h3 id="return">Return</h3>
+					<p>Copies files placed in <code>/home/&ltinstructor&gt/return</code> folder to your students' <code>/home/&ltstudent&gt/returned</code> folder.</p>
+					<code class="tool">classman return -s &lt/path/to/students.in&gt -f &ltflag&gt</code>
+				</div>
+			</section>
+
 		</div>
-
-		<hr>
-
-		<h2>Setting Up Commands</h2>
-		<p>
-			<code>cd</code> into the repository and run <code>bash setup.sh</code> in the terminal.
-		</p>
-		<p>
-			It's as simple as that! Run <code>classman help</code> to check if the
-			scripts have been setup properly. You should see a man page pop up in your
-			terminal.
-		</p>
-		<p>
-			<strong>If you do not see the man page and receive a message saying a script
-			cannot be found you will need to run</strong>
-			<code>source $HOME/.bash_aliases</code>.
-		</p>
-
-		<hr>
-
-		<h2 id="instr_toolkit">
-			<strong>Instructor Toolkit</strong>
-		</h2>
-		<div class="tool">
-		<h3 id="assign">Assign</h3>
-			<p>Copy a file or folder and place it in <code>/home/student/assignments</code></p>
-			<code class="tooltip">classman assign -s &lt/path/to/students.in&gt -a &lt/path/to/assignment&gt</code>
-		</div>
-
-		<div class="tool">
-			<h3 id="collect">Collect</h3>
-			<p>
-				Find and copy student work into your
-				<code>/home/&ltinstructor&gt/homework</code> folder. The program will
-				find files according to the tag given to the -t option.
-			</p>
-			<code class="tooltip">classman collect -s &lt/path/to/students.in&gt -t &lttag&gt</code>
-		</div>
-		<div class="tool">
-			<h3 id="create">Create</h3>
-			<p>Creates directories for students <code>/home/&ltstudent&gt/{submit,returned,mynotes}</code>.</p>
-			<code class="tooltip">classman create -s &lt/path/to/students.in&gt</code>
-		</div>
-
-		<div class="tool">
-			<h3 id="help">Help</h3>
-			<code class="tooltip">classman help &ltaction&gt</code>
-		</div>
-
-		<div class="tool">
-			<h3 id="return">Return</h3>
-			<p>Copies files placed in <code>/home/&ltinstructor&gt/return</code> folder to your students' <code>/home/&ltstudent&gt/returned</code> folder.</p>
-			<code class="tooltip">classman return -s &lt/path/to/students.in&gt -f &ltflag&gt</code>
-		</div>
-
-</div>
-
-
-
-</body>
+	</body>
 </html>
