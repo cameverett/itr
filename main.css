@@ -83,7 +83,7 @@ hr {
 .tool {
 	color: #000;
   font-family: "Lucida Console", Monaco, monospace;
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: inline-block;
   margin: 0.25rem 0.25rem 1.5rem 0.25rem;
   padding: 0.5rem;
@@ -163,7 +163,35 @@ hr {
 	}
 }
 
-@media screen and (min-device-width: 35rem) and (min-width: 35rem) {
+@media screen and (min-device-width: 48rem) and (min-width: 48rem) {
+	#nav-menu {
+		position: fixed;
+		width: 14rem;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		color: #fff;
+		text-align: left;
+		border-top-right-radius: 0.75rem;
+		border-bottom-left-radius: 0rem;
+		border-bottom-right-radius: 0rem;
+		font-size: 0.75rem;
+	}
+
+	#main-content {
+		margin-left: 15rem;
+		padding: 1rem;
+		color: #000;
+		font-size: 0.8rem;
+	}
+
+	.tool {
+		font-size: 0.75rem;
+	}
+}
+
+@media screen and (min-device-width: 64rem) and (min-width: 64rem) {
+
 	#nav-menu {
 		position: fixed;
 		width: 20rem;
@@ -171,7 +199,7 @@ hr {
 		bottom: 0;
 		left: 0;
 		color: #fff;
-		text-align: center;
+		text-align: left;
 		border-top-right-radius: 0.75rem;
 		border-bottom-left-radius: 0rem;
 		border-bottom-right-radius: 0rem;
