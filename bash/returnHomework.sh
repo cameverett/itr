@@ -13,10 +13,10 @@ while getopts ":i:s:p:f:" opt; do
 	esac
 done
 
-if [[ ! $instructor ]] || [[ ! -f $studentfile ]]; then
+if [[ ! $instructor ]] || [[ ! -f "$studentfile" ]]; then
 	if [[ ! $instructor ]]; then
 		printf "Missing Argument -i <instructor_username>\n"
-	elif [[ ! -f $studentfile ]]; then
+	elif [[ ! -f "$studentfile" ]]; then
 		printf "Missing Argument -s </path/to/studentfile>\n"
 	elif [[ ! $flag ]]; then
 		printf "Missing Argument -f <tag to search for assignment>\n"
@@ -39,5 +39,5 @@ while read student; do
 		sudo chown -R "$student:$group" "$destinationRoot/$student/returned"
 		sudo chmod -R "$permissions" "$destinationRoot/$student/returned"
 	fi
-done < $studentfile
+done < "$studentfile"
 

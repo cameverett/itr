@@ -27,7 +27,7 @@ while getopts ":i:t:s:" opt; do
 	esac
 done
 
-if [[ ! $instructor ]] || [[ ! $tag ]] || [[ ! -f $studentfile ]]; then
+if [[ ! $instructor ]] || [[ ! $tag ]] || [[ ! -f "$studentfile" ]]; then
 	if [[ ! $instructor ]]; then
 		printf "Missing argument -i <instructor>\n"
 	fi
@@ -46,20 +46,20 @@ fi
 
 destination="$sourceRoot/$instructor/homework"
 
-if [[ ! -d $destination ]]; then
+if [[ ! -d "$destination" ]]; then
 	printf "Creating %s\n" "$destination"
-	mkdir -p $destination
+	mkdir -p "$destination"
 fi
 
 touch "$destination/log.tsv"
 while read student; do
 	if ls -U $sourceRoot/$student/submit/$tag* 1> /dev/null 2>&1; then
-		mkdir -p $destination/$student
-		cp $sourceRoot/$student/submit/$tag* $destination/$student
+		mkdir -p "$destination/$student"
+		cp $sourceRoot/$student/submit/$tag* "$destination/$student"
 	else
 		printf "%s\t%s\n" "$student" "$tag" >> "$sourceRoot/$instructor/homework/log.tsv"
 	fi
-done < $studentfile
+done < "$studentfile"
 
-chown -R "$instructor:$group" $destination
-chmod -R 740 $destination
+chown -R "$instructor:$group" "$destination"
+chmod -R 740 "$destination"

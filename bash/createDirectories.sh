@@ -24,7 +24,7 @@ while getopts ":i:s:" opt; do
 	esac
 done
 
-if [[ ! $INSTRUCTOR_HOME_DIR ]] || [[ ! -f $studentfile ]]; then
+if [[ ! $INSTRUCTOR_HOME_DIR ]] || [[ ! -f "$studentfile" ]]; then
 	showUsage
 	exit 1
 fi
@@ -40,9 +40,9 @@ while read student; do
 	mkdir -p "$INSTRUCTOR_HOME_DIR/returned/$student"
 
 	if \
-	[ -d $STUDENT_HOME_DIR/submit ] && \
-	[ -d $STUDENT_HOME_DIR/returned ] && \
-	[ -d $STUDENT_HOME_DIR/mynotes ];
+	[ -d "$STUDENT_HOME_DIR/submit" ] && \
+	[ -d "$STUDENT_HOME_DIR/returned" ] && \
+	[ -d "$STUDENT_HOME_DIR/mynotes" ];
 	then
 		printf "Directories created successfully for $student\n"
 	else
@@ -50,5 +50,5 @@ while read student; do
 	fi
 done < $studentfile
 
-chown -R "$instructor:$group" $INSTRUCTOR_HOME_DIR/returned
-chmod -R 740 $INSTRUCTOR_HOME_DIR/returned
+chown -R "$instructor:$group" "$INSTRUCTOR_HOME_DIR/returned"
+chmod -R 740 "$INSTRUCTOR_HOME_DIR/returned"

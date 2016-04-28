@@ -23,20 +23,20 @@ destinationRoot="/home"
 group="instructors"
 permissions="770"
 
-if [[ -d $assignment ]]; then
+if [[ -d "$assignment" ]]; then
 	while read student; do
 	mkdir -p "$destinationRoot/$student/assignments"
-	cp -r $assignment "$destinationRoot/$student/assignments"
+	cp -r "$assignment" "$destinationRoot/$student/assignments"
 	chmod -R "$permissions" "$destinationRoot/$student/assignments"
 	chown -R "$student":"$group" "$destinationRoot/$student/assignments"
-	done < $studentfile
-elif [[ -f $assignment ]]; then
+	done < "$studentfile"
+elif [[ -f "$assignment" ]]; then
 	while read student; do
 	mkdir -p "$destinationRoot/$student/assignments"
-	cp $assignment "$destinationRoot/$student/assignments"
+	cp "$assignment" "$destinationRoot/$student/assignments"
 	chmod -R "$permissions" "$destinationRoot/$student/assignments"
 	chown -R "$student":"$group" "$destinationRoot/$student/assignments"
-	done < $studentfile
+	done < "$studentfile"
 else
 	printf "%s is not a file or directory\n" "$assignment"
 	showUsage
