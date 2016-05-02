@@ -16,6 +16,10 @@ getHelpPage() {
 			man $HOME/itr/classman_assign.gz
 			printf "Getting assign help page\n"
 			;;
+#		publish)
+#			man $HOME/itr/classman_publish.gz
+#			printf "Getting publish help page\n"
+#			;;
 		collect)
 			man $HOME/itr/classman_collect.gz
 			printf "Getting collect help page\n"
@@ -72,6 +76,9 @@ case $action in
 	assign)
 		sudo bash $HOME/itr/bash/assignHomework.sh -a $Aflag -s $Sflag
 		;;
+#	publish)
+#		sudo bash $HOME/itr/bash/publish.sh -a $Aflag -s $Sflag
+#		;;
 	collect)
 		sudo bash $HOME/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
 		;;
