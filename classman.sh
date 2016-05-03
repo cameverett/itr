@@ -4,10 +4,10 @@ showUsage() {
 	printf "Usage:\n"
 	printf "\tclassman help\n"
 	printf "\tclassman help <action>\n"
-	printf "\tclassman collect -i <instructor> -s </path/to/studentfile> -t <tag>\n"
-	printf "\tclassman create -i <instructor> -s </path/to/studentfile>\n"
+	printf "\tclassman collect -s </path/to/studentfile> -t <tag>\n"
+	printf "\tclassman create -s </path/to/studentfile>\n"
 	printf "\tclassman publish -a </path/to/assignment> -s </path/to/studentfile>\n"
-	printf "\tclassman return -i <instructor> -s </path/to/studentfile> -p </path/to/assignments> -f <tag>\n"
+	printf "\tclassman return -s </path/to/studentfile> -p </path/to/assignments> -f <tag>\n"
 	exit 1
 }
 
