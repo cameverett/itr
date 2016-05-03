@@ -2,25 +2,17 @@
 
 showUsage() {
 	printf "Usage:\n"
-	printf "\tclassman assign -a </path/to/assignment> -s </path/to/studentfile>\n"
+	printf "\tclassman help\n"
+	printf "\tclassman help <action>\n"
 	printf "\tclassman collect -i <instructor> -s </path/to/studentfile> -t <tag>\n"
 	printf "\tclassman create -i <instructor> -s </path/to/studentfile>\n"
+	printf "\tclassman publish -a </path/to/assignment> -s </path/to/studentfile>\n"
 	printf "\tclassman return -i <instructor> -s </path/to/studentfile> -p </path/to/assignments> -f <tag>\n"
-	printf "\tclassman help <action>\n"
-	printf "\tclassman help\n"
 	exit 1
 }
 
 getHelpPage() {
 	case $1 in
-		assign)
-			man $HOME/itr/classman_assign.gz
-			printf "Getting assign help page\n"
-			;;
-		publish)
-			man $HOME/itr/classman_publish.gz
-			printf "Getting publish help page\n"
-			;;
 		collect)
 			man $HOME/itr/classman_collect.gz
 			printf "Getting collect help page\n"
@@ -28,6 +20,10 @@ getHelpPage() {
 		create) 
 			man $HOME/itr/classman_create.gz
 			printf "Getting create help page\n"
+			;;
+		publish)
+			man $HOME/itr/classman_publish.gz
+			printf "Getting publish help page\n"
 			;;
 		return)
 			man $HOME/itr/classman_return.gz
@@ -53,20 +49,20 @@ shift
 
 while getopts ":t:s:p:f:a:" opt; do
 	case $opt in
-		t)
-			Tflag=$OPTARG
-			;;
-		s)
-			Sflag=$OPTARG
-			;;
-		p)
-			Pflag=$OPTARG
+		a)
+			Aflag=$OPTARG
 			;;
 		f)
 			Fflag=$OPTARG
 			;;
-		a)
-			Aflag=$OPTARG
+		p)
+			Pflag=$OPTARG
+			;;
+		s)
+			Sflag=$OPTARG
+			;;
+		t)
+			Tflag=$OPTARG
 			;;
 		*)
 			showUsage
@@ -74,23 +70,20 @@ while getopts ":t:s:p:f:a:" opt; do
 done
 
 case $action in
-	assign)
-		sudo bash $HOME/itr/bash/assignHomework.sh -a $Aflag -s $Sflag
-		;;
-	publish)
-		sudo bash $HOME/itr/bash/publishHomework.sh -a $Aflag -s $Sflag
-		;;
 	collect)
 		sudo bash $HOME/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
+		;;
+	create)
+		sudo bash $HOME/itr/bash/createDirectories.sh -i $instructor -s $Sflag
 		;;
 	help)
 		getHelpPage $helpPage
 		;;
+	publish)
+		sudo bash $HOME/itr/bash/publishHomework.sh -a $Aflag -s $Sflag
+		;;
 	remove)
 		bash $HOME/itr/cleanup.sh
-		;;
-	create)
-		sudo bash $HOME/itr/bash/createDirectories.sh -i $instructor -s $Sflag
 		;;
 	return)
 		sudo bash $HOME/itr/bash/returnHomework.sh -i $instructor -s $Sflag -p $Pflag -f $Fflag
