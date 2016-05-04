@@ -25,12 +25,6 @@ or find us online at:
 https://cameverett.github.com/itr
 
 
-To Get Started
---------------
->: cd into itr eepo
-
->: source ./setup.sh
-
 ////////////////////////////////////////////
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
