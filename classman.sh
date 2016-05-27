@@ -17,7 +17,7 @@ getHelpPage() {
 			man $HOME/itr/classman_collect.gz
 			printf "Getting collect help page\n"
 			;;
-		create) 
+		create)
 			man $HOME/itr/classman_create.gz
 			printf "Getting create help page\n"
 			;;
@@ -82,13 +82,9 @@ case $action in
 	publish)
 		sudo bash $HOME/itr/bash/publishHomework.sh -a $Aflag -s $Sflag
 		;;
-	remove)
-		bash $HOME/itr/cleanup.sh
-		;;
 	return)
 		sudo bash $HOME/itr/bash/returnHomework.sh -i $instructor -s $Sflag -p $Pflag -f $Fflag
 		;;
 	* | help)
 		showUsage
 esac
-
