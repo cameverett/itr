@@ -85,6 +85,6 @@ case $action in
 	return)
 		sudo bash $HOME/itr/bash/returnHomework.sh -i $instructor -s $Sflag -p $Pflag -f $Fflag
 		;;
-	* | help)
+	*)
 		showUsage
 esac
