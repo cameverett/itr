@@ -14,35 +14,40 @@ showUsage() {
 getHelpPage() {
 	case $1 in
 		collect)
-			man $HOME/itr/classman_collect.gz
+			#man $HOME/itr/classman_collect.gz
+			man classman_collect
 			printf "Getting collect help page\n"
 			;;
 		create)
-			man $HOME/itr/classman_create.gz
+			#man $HOME/itr/classman_create.gz
+			man classman_create
 			printf "Getting create help page\n"
 			;;
 		publish)
-			man $HOME/itr/classman_publish.gz
+			#man $HOME/itr/classman_publish.gz
+			man classman_publish
 			printf "Getting publish help page\n"
 			;;
 		return)
-			man $HOME/itr/classman_return.gz
+			man classman_return
 			printf "Getting return help page\n"
 			;;
 		"" | classman)
-			man $HOME/itr/classman_help.gz
+			#man $HOME/itr/classman_help.gz
+			man classman_help
 			printf "Getting classman help page\n"
 			;;
 		*)
 			printf "No man page for that action\n"
-			man $HOME/itr/classman_help.gz
+			#man $HOME/itr/classman_help.gz
+			man classman_help
 			;;
 	esac
 }
 
-action=$1
-helpPage=$2
-instructor=$USER
+action="$1"
+helpPage="$2"
+instructor="$USER"
 
 # Need to shift the positional arguments so that getopts can start from $1
 shift
@@ -50,19 +55,19 @@ shift
 while getopts ":t:s:p:f:a:" opt; do
 	case $opt in
 		a)
-			Aflag=$OPTARG
+			Aflag="$OPTARG"
 			;;
 		f)
-			Fflag=$OPTARG
+			Fflag="$OPTARG"
 			;;
 		p)
-			Pflag=$OPTARG
+			Pflag="$OPTARG"
 			;;
 		s)
-			Sflag=$OPTARG
+			Sflag="$OPTARG"
 			;;
 		t)
-			Tflag=$OPTARG
+			Tflag="$OPTARG"
 			;;
 		*)
 			showUsage
