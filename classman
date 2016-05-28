@@ -25,10 +25,6 @@ getHelpPage() {
 		return)
 			man classman_return
 			;;
-		 #"" | classman)
-			#man classman_help
-			#showUsage
-			#;;
 		*)
 			printf "No man page for that action\n"
 			man classman_help
