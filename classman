@@ -41,10 +41,6 @@ action="$1"
 helpPage="$2"
 instructor="$USER"
 
-if groups $instructor | grep "\binstructors\b" && [[ ! -z $instructor ]]; then
-	echo "ready to go!"
-fi
-
 # Need to shift the positional arguments so that getopts can start from $1
 shift
 
