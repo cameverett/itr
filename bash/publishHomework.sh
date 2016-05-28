@@ -7,10 +7,10 @@ showUsage () {
 while getopts ":s:a:" opt; do
 	case $opt in
 	s)
-		studentfile=$OPTARG
+		studentfile="$OPTARG"
 		;;
 	a)
-		assignment=$OPTARG
+		assignment="$OPTARG"
 		;;
 	*)
 		showUsage
@@ -23,14 +23,14 @@ destinationRoot="/home"
 group="instructors"
 permissions="770"
 
-if [[ -d "$assignment" ]]; then
+if [[ -d $assignment ]]; then
 	while read student; do
 	mkdir -p "$destinationRoot/$student/assignments"
 	cp -r "$assignment" "$destinationRoot/$student/assignments"
 	chmod -R "$permissions" "$destinationRoot/$student/assignments"
 	chown -R "$student":"$group" "$destinationRoot/$student/assignments"
 	done < "$studentfile"
-elif [[ -f "$assignment" ]]; then
+elif [[ -f $assignment ]]; then
 	while read student; do
 	mkdir -p "$destinationRoot/$student/assignments"
 	cp "$assignment" "$destinationRoot/$student/assignments"

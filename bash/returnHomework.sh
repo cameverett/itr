@@ -5,9 +5,9 @@ permissions="770"
 
 while getopts ":i:s:p:f:" opt; do
 	case $opt in
-	i ) instructor=$OPTARG ;;
-	s ) studentfile=$OPTARG ;;
-	p ) pathExtension=$OPTARG ;;
+	i ) instructor="$OPTARG" ;;
+	s ) studentfile="$OPTARG" ;;
+	p ) pathExtension="$OPTARG" ;;
 	f ) flag=$OPTARG ;;
 	* ) printf "Usage classman return -s </path/to/studentfile> -i <your_username> -f <flag> -p </path/in/your/homework/directory\n"
 	esac
