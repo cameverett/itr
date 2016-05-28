@@ -75,7 +75,7 @@ done
 
 case $action in
 	collect)
-		sudo bash /usr/lib/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
+		bash /usr/lib/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
 		;;
 	create)
 		sudo bash /usr/lib/itr/bash/createDirectories.sh -i $instructor -s $Sflag
