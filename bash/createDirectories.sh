@@ -6,17 +6,17 @@ permissions="770"
 
 showUsage()
 {
-	printf "Usage: classman create -i <your username> -s </path/to/studentfile>\n";
+	printf "Usage: classman create -s </path/to/studentfile>\n";
 }
 
 while getopts ":i:s:" opt; do
 	case $opt in
 		i )
-			instructor=$OPTARG
+			instructor="$OPTARG"
 			INSTRUCTOR_HOME_DIR="/home/$OPTARG"
 			;;
-		s ) 
-			studentfile=$OPTARG
+		s )
+			studentfile="$OPTARG"
 			;;
 		* )
 			showUsage
@@ -24,19 +24,19 @@ while getopts ":i:s:" opt; do
 	esac
 done
 
-if [[ ! $INSTRUCTOR_HOME_DIR ]] || [[ ! -f "$studentfile" ]]; then
+if [[ ! -d $INSTRUCTOR_HOME_DIR ]] || [[ ! -f $studentfile ]]; then
 	showUsage
 	exit 1
 fi
 
-mkdir -p $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
-chown "$instructor:$group" $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
-chmod "740" $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
+mkdir -p "$INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}"
+chown "$instructor:$group" "$INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}"
+chmod "740" "$INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}"
 
 while read student; do
 	STUDENT_HOME_DIR="$sourceRoot/$student"
-	mkdir -p $STUDENT_HOME_DIR/{submit,returned,mynotes}
-	chown -R "$student:$group" $STUDENT_HOME_DIR/
+	mkdir -p "$STUDENT_HOME_DIR/{submit,returned,mynotes}"
+	chown -R "$student:$group" "$STUDENT_HOME_DIR/"
 	mkdir -p "$INSTRUCTOR_HOME_DIR/returned/$student"
 
 	if \
@@ -44,9 +44,9 @@ while read student; do
 	[ -d "$STUDENT_HOME_DIR/returned" ] && \
 	[ -d "$STUDENT_HOME_DIR/mynotes" ];
 	then
-		printf "Directories created successfully for $student\n"
+		printf "Directories created successfully for %s\n" "$student"
 	else
-		printf "Failed to create directories for $student\n"
+		printf "Failed to create directories for %s\n" "$student"
 	fi
 done < $studentfile
 
