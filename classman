@@ -28,20 +28,27 @@ getHelpPage() {
 		*)
 			printf "No man page for that action\n"
 			man classman_help
-			showUsage
 	esac
 
 	exit 1
 }
 
+
+
+
+
 action="$1"
 helpPage="$2"
 instructor="$USER"
 
+if [[ groups $instructor | grep "\binstructors\b" ]] && [[ ! -z $instructor ]]; then
+	echo "ready to go!"
+fi
+
 # Need to shift the positional arguments so that getopts can start from $1
 shift
 
-while getopts ":t:s:p:f:a:" opt; do
+while getopts ":t:s:p:f:a:g:" opt; do
 	case $opt in
 		a)
 			Aflag="$OPTARG"
@@ -57,6 +64,9 @@ while getopts ":t:s:p:f:a:" opt; do
 			;;
 		t)
 			Tflag="$OPTARG"
+			;;
+		g)
+			Gflag="$OPTARG"
 			;;
 		*)
 			showUsage
