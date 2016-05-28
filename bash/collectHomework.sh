@@ -53,13 +53,15 @@ if [[ ! -d $destination ]]; then
 	chmod -R 740 "$destination"
 fi
 
-touch "$destination/log.tsv"
+touch "$destination/"$tag"log"
+timeCollected=$(date +"%D %H:%M%S")
+printf "Logged at: %s\n" "$timeCollected" >> "$destination/"$tag"log"
 while read student; do
 	if find "$sourceRoot/$student/submit/"*$tag* 1> /dev/null 2>&1; then
 		mkdir -p "$destination/$student"
 		cp "$sourceRoot/$student/submit/"*$tag* "$destination/$student"
 	else
-		printf "%s\t%s\n" "$student" "$tag" >> "$sourceRoot/$instructor/homework/"$tag"log.tsv"
+		printf "%s\t%s\n" "$student" "$tag" >> "$destination/"$tag"log"
 	fi
 done < "$studentfile"
 
