@@ -5,7 +5,7 @@ INSTRUCTOR_GROUP="instructors"
 
 showUsage()
 {
-	printf "Usage: classman collect -i <your_username> -t <tag> -s </path/to/studentfile\n";
+	printf "Usage: classman collect -t <tag> -s </path/to/studentfile\n";
 }
 
 while getopts ":i:t:s:" opt; do
