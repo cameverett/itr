@@ -73,16 +73,12 @@ while getopts ":t:s:p:f:a:g:" opt; do
 	esac
 done
 
-echo "ENTERING ACTION SELECTION"
-
 case $action in
 	collect)
 		sudo bash /usr/lib/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
 		;;
 	create)
-		echo "Made it to ACTION => create case"
 		sudo bash /usr/lib/itr/bash/createDirectories.sh -i $instructor -s $Sflag
-		echo "EXECUTED ACTION => create case"
 		;;
 	help)
 		getHelpPage $helpPage
