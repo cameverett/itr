@@ -49,6 +49,8 @@ destination="$sourceRoot/$instructor/homework"
 if [[ ! -d $destination ]]; then
 	printf "Creating %s\n" "$destination"
 	mkdir -p "$destination"
+	chmod 740 "$destination"
+	chown "$instructor":"$INSTRUCTOR_GROUP" "$destination"
 fi
 
 touch "$destination/log.tsv"
