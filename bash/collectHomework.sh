@@ -29,15 +29,15 @@ done
 
 if [[ ! $instructor ]] || [[ ! $tag ]] || [[ ! -f "$studentfile" ]]; then
 	if [[ ! $instructor ]]; then
-		printf "Missing argument -i <instructor>\n"
+		printf "Missing valid argument -i <instructor>\n"
 	fi
 
 	if [[ ! $tag ]]; then
-		printf "Missing argument -t <searchtag>\n"
+		printf "Missing valid argument -t <searchtag>\n"
 	fi
 
-	if [[ ! $studentfile ]]; then
-		printf "Missing argument -s </path/to/studentfile>\n"
+	if [[ ! -f $studentfile ]]; then
+		printf "Missing valid argument -s </path/to/studentfile>\n"
 	fi
 
 	showUsage
@@ -46,7 +46,7 @@ fi
 
 destination="$sourceRoot/$instructor/homework"
 
-if [[ ! -d "$destination" ]]; then
+if [[ ! -d $destination ]]; then
 	printf "Creating %s\n" "$destination"
 	mkdir -p "$destination"
 fi

@@ -14,35 +14,28 @@ showUsage() {
 getHelpPage() {
 	case $1 in
 		collect)
-			#man $HOME/itr/classman_collect.gz
 			man classman_collect
-			printf "Getting collect help page\n"
 			;;
 		create)
-			#man $HOME/itr/classman_create.gz
 			man classman_create
-			printf "Getting create help page\n"
 			;;
 		publish)
-			#man $HOME/itr/classman_publish.gz
 			man classman_publish
-			printf "Getting publish help page\n"
 			;;
 		return)
 			man classman_return
-			printf "Getting return help page\n"
 			;;
-		"" | classman)
-			#man $HOME/itr/classman_help.gz
-			man classman_help
-			printf "Getting classman help page\n"
-			;;
+		 #"" | classman)
+			#man classman_help
+			#showUsage
+			#;;
 		*)
 			printf "No man page for that action\n"
-			#man $HOME/itr/classman_help.gz
 			man classman_help
-			;;
+			showUsage
 	esac
+
+	exit 1
 }
 
 action="$1"
