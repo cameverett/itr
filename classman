@@ -75,19 +75,23 @@ done
 
 case $action in
 	collect)
-		sudo bash $HOME/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
+		#sudo bash $HOME/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
+		sudo bash /usr/lib/itr/bash/collectHomework.sh -i $instructor -s $Sflag -t $Tflag
 		;;
 	create)
-		sudo bash $HOME/itr/bash/createDirectories.sh -i $instructor -s $Sflag
+		#sudo bash $HOME/itr/bash/createDirectories.sh -i $instructor -s $Sflag
+		sudo bash /usr/lib/itr/bash/createDirectories.sh -i $instructor -s $Sflag
 		;;
 	help)
 		getHelpPage $helpPage
 		;;
 	publish)
-		sudo bash $HOME/itr/bash/publishHomework.sh -a $Aflag -s $Sflag
+		#sudo bash $HOME/itr/bash/publishHomework.sh -a $Aflag -s $Sflag
+		sudo bash /usr/lib/itr/bash/publishHomework.sh -a $Aflag -s $Sflag
 		;;
 	return)
-		sudo bash $HOME/itr/bash/returnHomework.sh -i $instructor -s $Sflag -p $Pflag -f $Fflag
+		#sudo bash $HOME/itr/bash/returnHomework.sh -i $instructor -s $Sflag -p $Pflag -f $Fflag
+		sudo bash /usr/lib/itr/bash/returnHomework.sh -i $instructor -s $Sflag -p $Pflag -f $Fflag
 		;;
 	*)
 		showUsage
