@@ -10,16 +10,16 @@ showUsage()
 
 while getopts ":i:t:s:" opt; do
 	case $opt in
-		i) 
-			instructor=$OPTARG
+		i)
+			instructor="$OPTARG"
 			;;
-		t) 
-			tag=$OPTARG
+		t)
+			tag="$OPTARG"
 			;;
-		s) 
-			studentfile=$OPTARG
+		s)
+			studentfile="$OPTARG"
 			;;
-		*) 
+		*)
 			printf "Invalid option was given\n"
 			showUsage
 			exit 1
