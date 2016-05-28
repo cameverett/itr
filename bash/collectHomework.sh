@@ -27,7 +27,7 @@ while getopts ":i:t:s:" opt; do
 	esac
 done
 
-if [[ ! $instructor ]] || [[ ! $tag ]] || [[ ! -f "$studentfile" ]]; then
+if [[ ! $instructor ]] || [[ ! $tag ]] || [[ ! -f $studentfile ]]; then
 	if [[ ! $instructor ]]; then
 		printf "Missing valid argument -i <instructor>\n"
 	fi

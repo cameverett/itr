@@ -29,15 +29,15 @@ if [[ ! -d $INSTRUCTOR_HOME_DIR ]] || [[ ! -f $studentfile ]]; then
 	exit 1
 fi
 
-mkdir -p "$INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}"
-chown "$instructor:$group" "$INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}"
-chmod "740" "$INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}"
+mkdir -p $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
+chown "$instructor:$group" $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
+chmod "740" $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
 
 while read student; do
 	STUDENT_HOME_DIR="$sourceRoot/$student"
-	mkdir -p "$STUDENT_HOME_DIR/{submit,returned,mynotes}"
-	chown -R "$student:$group" "$STUDENT_HOME_DIR/"
-	mkdir -p "$INSTRUCTOR_HOME_DIR/returned/$student"
+	mkdir -p $STUDENT_HOME_DIR/{submit,returned,mynotes}
+	chown -R $student:$group $STUDENT_HOME_DIR/
+	mkdir -p $INSTRUCTOR_HOME_DIR/returned/$student
 
 	if \
 	[ -d "$STUDENT_HOME_DIR/submit" ] && \
