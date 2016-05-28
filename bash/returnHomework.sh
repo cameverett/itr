@@ -13,16 +13,16 @@ while getopts ":i:s:p:f:" opt; do
 	esac
 done
 
-if [[ ! $instructor ]] || [[ ! -f "$studentfile" ]]; then
-	if [[ ! $instructor ]]; then
+if [[ -z $instructor ]] || [[ ! -f "$studentfile" ]]; then
+	if [[ -z $instructor ]]; then
 		printf "Missing Argument -i <instructor_username>\n"
 	elif [[ ! -f "$studentfile" ]]; then
 		printf "Missing Argument -s </path/to/studentfile>\n"
-	elif [[ ! $flag ]]; then
+	elif [[ -z $flag ]]; then
 		printf "Missing Argument -f <tag to search for assignment>\n"
 	fi
 	exit 1
-fi	
+fi
 
 pathRoot="$sourceRoot/$instructor/homework"
 if [[ $pathExtension == "-f" ]]; then # TODO not sure why the p option defaults to "-f" when -p value not given.
@@ -31,7 +31,7 @@ else
 	pathExtension="$pathExtension/"
 fi
 
-while read student; do	
+while read student; do
 	if [[ ! -d "$pathRoot/$student/$pathExtension" ]]; then
 		printf "%s/%s/%s/ does not exist.\n" "$pathRoot" "$student" "$pathExtension"
 	else
@@ -40,4 +40,3 @@ while read student; do
 		sudo chmod -R "$permissions" "$destinationRoot/$student/returned"
 	fi
 done < "$studentfile"
-
