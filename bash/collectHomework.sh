@@ -59,7 +59,7 @@ while read student; do
 		mkdir -p "$destination/$student"
 		cp "$sourceRoot/$student/submit/"*$tag* "$destination/$student"
 	else
-		printf "%s\t%s\n" "$student" "$tag" >> "$sourceRoot/$instructor/homework/log.tsv"
+		printf "%s\t%s\n" "$student" "$tag" > "$sourceRoot/$instructor/homework/log.tsv"
 	fi
 done < "$studentfile"
 
