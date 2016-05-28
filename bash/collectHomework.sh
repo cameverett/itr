@@ -49,8 +49,8 @@ destination="$sourceRoot/$instructor/homework"
 if [[ ! -d $destination ]]; then
 	printf "Creating %s\n" "$destination"
 	mkdir -p "$destination"
-	chmod 740 "$destination"
-	chown "$instructor":"$INSTRUCTOR_GROUP" "$destination"
+	chown -R "$instructor:$INSTRUCTOR_GROUP" "$destination"
+	chmod -R 740 "$destination"
 fi
 
 touch "$destination/log.tsv"
@@ -63,5 +63,5 @@ while read student; do
 	fi
 done < "$studentfile"
 
-chown -R "$instructor:$group" "$destination"
+chown -R "$instructor:$INSTRUCTOR_GROUP" "$destination"
 chmod -R 740 "$destination"
