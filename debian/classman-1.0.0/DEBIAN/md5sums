@@ -1,0 +1,11 @@
+9c997bc69caa1cc60ef9ebe96d33c106  usr/bin/classman
+1acebe53ca606bc56df148498309aacd  usr/share/doc/classman-1.0.0/README.Debian
+b3a9d2d1aeb8785b06e1fa88d2997051  usr/share/doc/classman-1.0.0/README.md
+746833443b3865d2f715b2b60e039b81  usr/share/doc/classman-1.0.0/changelog.Debian.gz
+29317fbb13c09d127ff0768ebc080d3f  usr/share/doc/classman-1.0.0/copyright
+625d3c853eeea86caf9d97d24693c362  usr/share/doc/classman-1.0.0/welcome.txt
+c252224321f54eef1867a8751ea7674f  usr/share/man/man1/classman_collect.1.gz
+3ac0d7dafe5c8f97b5060184c57e1553  usr/share/man/man1/classman_create.1.gz
+abc652877e8cad4819fc80f6b562be1d  usr/share/man/man1/classman_help.1.gz
+400ff0eae770302c0e868daf16150f04  usr/share/man/man1/classman_publish.1.gz
+9ee51acef5f8c5d56aa9f34ec06b719c  usr/share/man/man1/classman_return.1.gz
