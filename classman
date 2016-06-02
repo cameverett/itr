@@ -44,7 +44,7 @@ instructor="$USER"
 # Need to shift the positional arguments so that getopts can start from $1
 shift
 
-while getopts ":t:s:p:f:a:g:" opt; do
+while getopts ":t:s:p:f:a:" opt; do
 	case $opt in
 		a)
 			Aflag="$OPTARG"
@@ -60,9 +60,6 @@ while getopts ":t:s:p:f:a:g:" opt; do
 			;;
 		t)
 			Tflag="$OPTARG"
-			;;
-		g)
-			Gflag="$OPTARG"
 			;;
 		*)
 			showUsage
