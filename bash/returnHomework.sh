@@ -8,12 +8,12 @@ while getopts ":i:s:p:f:" opt; do
 	i ) instructor="$OPTARG" ;;
 	s ) studentfile="$OPTARG" ;;
 	p ) pathExtension="$OPTARG" ;;
-	f ) flag=$OPTARG ;;
+	f ) flag="$OPTARG" ;;
 	* ) printf "Usage classman return -s </path/to/studentfile> -i <your_username> -f <flag> -p </path/in/your/homework/directory\n"
 	esac
 done
 
-if [[ -z $instructor ]] || [[ ! -f "$studentfile" ]]; then
+if [[ -z $instructor ]] || [[ ! -f "$studentfile" ]] || [[ -z $flag ]]; then
 	if [[ -z $instructor ]]; then
 		printf "Missing Argument -i <instructor_username>\n"
 	elif [[ ! -f "$studentfile" ]]; then
@@ -35,7 +35,7 @@ while read student; do
 	if [[ ! -d "$pathRoot/$student/$pathExtension" ]]; then
 		printf "%s/%s/%s/ does not exist.\n" "$pathRoot" "$student" "$pathExtension"
 	else
-		cp $pathRoot/$student/$pathExtension$flag* "$destinationRoot/$student/returned" 2> /dev/null
+		cp "$pathRoot/$student/$pathExtension"*$flag* "$destinationRoot/$student/returned" 2> /dev/null
 		sudo chown -R "$student:$group" "$destinationRoot/$student/returned"
 		sudo chmod -R "$permissions" "$destinationRoot/$student/returned"
 	fi
