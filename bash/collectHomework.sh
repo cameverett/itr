@@ -54,7 +54,7 @@ if [[ ! -d $destination ]]; then
 fi
 
 touch "$destination/"$tag"log"
-timeCollected=$(date +"%D %H:%M%S")
+timeCollected=$(date +"%D %H:%M:%S")
 printf "Logged at: %s\n" "$timeCollected" >> "$destination/"$tag"log"
 while read student; do
 	if find "$sourceRoot/$student/submit/"*$tag* 1> /dev/null 2>&1; then
