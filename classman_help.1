@@ -1,21 +1,21 @@
-.TH classman package 1 "15 April 2016" "itr/classman.sh" "Manual: classman commands"
+.TH classman package 1 "2 June 2016" "/usr/lib/classman" "Manual: classman commands"
 
 .SH NAME
-classman \- Entry point for ITR-Package
+classman \- Entry point for classman Debian Package
 
 .SH SYNOPSIS
 classman <action> [options]
 
 .SH DESCRIPTION
-The file itr/classman executable acts as an entry point to the packages utilities found in the itr/bash/ directory. It allows for git style commands such as classman create [options] similar to git commit [options] in form not function. The "actions" correspond to the different scripts found in the bash folder like so:
+The executable bash script classman acts as the entry point to the other packages utilities. It allows for git style commands such as classman create [options] similar to git commit [options] in form not function. The "actions" correspond to the different scripts found in the bash folder like so:
 .PP
-publish => itr/bash/publishHomework.sh
+publish => /usr/lib/classman/publishHomework.sh
 .PP
-collect => itr/bash/collectHomework.sh
+collect => /usr/lib/classman/collectHomework.sh
 .PP
-create => itr/bash/createHomework.sh
+create => /usr/lib/classman/createHomework.sh
 .PP
-return => itr/bash/returnHomework.sh
+return => /usr/lib/classman/returnHomework.sh
 
 .SH OPTIONS
 See help pages for each action for possible options to be called by scripts (below).
