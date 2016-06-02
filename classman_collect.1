@@ -12,18 +12,22 @@ searches each user's
 .B $HOME/submit
 Students will place their assignments in the submit folder to be collected by instructors. This script returns all files it finds in the submit folder beginning with the
 .B <tag>
-(e.g. hw01) and returns it to the instructor's $HOME/submissions directory.
+(e.g. hw01) and returns it to the instructor's $HOME/homework directory.
 .PP
-A file named log.tsv is updated to list students who have not turned in the assignment.
+A logfile with the name of the tag used is updated and lists students who have not turned in the assignment.
+.PP
+classman collect -s students.in -t hw01_csc creates a logfile $HOME/homework/hw01_csclog containing...
+.PP
+Logged at: MM/DD/YY HH:MM:SS
 .PP
 student0	hw01
 .PP
 student1	hw01
 .PP
-student0	hw02
+student2	hw01
 
 .PP
-The file executed is found at itr/bash/collectHomework.sh
+The file ran is found at /usr/lib/classman/bash/collectHomework.sh
 
 .SH OPTIONS
 .IP -s
