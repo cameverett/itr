@@ -8,7 +8,7 @@ while getopts ":i:s:f:p:" opt; do
 	i ) instructor="$OPTARG" ;;
 	s ) studentfile="$OPTARG" ;;
 	p ) pathExtension="$OPTARG" ;;
-	f ) flag=$OPTARG ;;
+	f ) flag="$OPTARG" ;;
 	* ) printf "Usage classman return -s </path/to/studentfile> -i <your_username> -f <flag> -p </path/in/your/homework/directory\n"
 	esac
 done
