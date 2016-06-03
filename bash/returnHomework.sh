@@ -49,10 +49,9 @@ function OptArgs() {
 			;;
 			-p )
 				if [[ $# == 0 ]] || [[ "${1:0:1}" == "-" ]]; then
-					printf "Missing Argument -p <where_to_search_inside homework folder>\n"
-					exit 1
+					pathExtension=""
 				fi
-				pathExtension="$1"
+				pathExtension="$1/"
 				shift
 			;;
 			* )
@@ -79,11 +78,11 @@ if [[ -z $instructor ]] || [[ ! -f "$studentfile" ]] || [[ -z $flag ]]; then
 fi
 
 pathRoot="$sourceRoot/$instructor/homework"
-if [[ -z $pathExtension ]];
-	pathExtension=""
-else
-	pathExtension="$pathExtension/"
-fi
+#if [[ -z $pathExtension ]]; then
+	#pathExtension=""
+#else
+	#pathExtension="$pathExtension/"
+#fi
 
 while read student; do
 	if [[ ! -d "$pathRoot/$student/$pathExtension" ]]; then
