@@ -8,16 +8,6 @@ studentfile=""
 pathExtension=""
 flag=""
 
-#while getopts ":i:s:f:p:" opt; do
-#	case $opt in
-#	i ) instructor="$OPTARG" ;;
-#	s ) studentfile="$OPTARG" ;;
-#	p ) pathExtension="$OPTARG" ;;
-#	f ) flag="$OPTARG" ;;
-#	* ) printf "Usage classman return -s </path/to/studentfile> -i <your_username> -f <flag> -p </path/in/your/homework/directory\n"
-#	esac
-#done
-
 function OptArgs() {
 	while [[ $# > 0 ]]; do
 		opt=$1
@@ -63,8 +53,6 @@ function OptArgs() {
 }
 
 OptArgs $*
-
-echo "-p $pathExtension"
 
 if [[ -z $instructor ]] || [[ ! -f "$studentfile" ]] || [[ -z $flag ]]; then
 	if [[ -z $instructor ]]; then
