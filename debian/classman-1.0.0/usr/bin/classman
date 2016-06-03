@@ -80,7 +80,7 @@ case $action in
 		sudo bash /usr/lib/classman/bash/publishHomework.sh -a $Aflag -s $Sflag
 		;;
 	return)
-		sudo bash /usr/lib/classman/bash/returnHomework.sh -i $instructor -s $Sflag -p $Pflag -f $Fflag
+		sudo bash /usr/lib/classman/bash/returnHomework.sh -i $instructor -s $Sflag -f $Fflag -p $Pflag
 		;;
 	*)
 		showUsage

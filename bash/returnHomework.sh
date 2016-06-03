@@ -3,12 +3,12 @@ destinationRoot="/home"
 group="instructors"
 permissions="770"
 
-while getopts ":i:s:p:f:" opt; do
+while getopts ":i:s:f:" opt; do
 	case $opt in
 	i ) instructor="$OPTARG" ;;
 	s ) studentfile="$OPTARG" ;;
-	p ) pathExtension="$OPTARG" ;;
-	f ) flag="$OPTARG" ;;
+	#p ) pathExtension="$OPTARG" ;;
+	f ) flag=$OPTARG ;;
 	* ) printf "Usage classman return -s </path/to/studentfile> -i <your_username> -f <flag> -p </path/in/your/homework/directory\n"
 	esac
 done
@@ -25,18 +25,20 @@ if [[ -z $instructor ]] || [[ ! -f "$studentfile" ]] || [[ -z $flag ]]; then
 fi
 
 pathRoot="$sourceRoot/$instructor/homework"
-if [[ $pathExtension == "-f" ]]; then # TODO not sure why the p option defaults to "-f" when -p value not given.
-	pathExtension=""
-else
-	pathExtension="$pathExtension/"
-fi
+#if [[ -z $pathExtension ]];
+	#pathExtension=""
+#else
+	#pathExtension="$pathExtension/"
+#fi
 
 while read student; do
-	if [[ ! -d "$pathRoot/$student/$pathExtension" ]]; then
-		printf "%s/%s/%s/ does not exist.\n" "$pathRoot" "$student" "$pathExtension"
-	else
-		cp "$pathRoot/$student/$pathExtension"*$flag* "$destinationRoot/$student/returned" 2> /dev/null
+	#if [[ ! -d "$pathRoot/$student/$pathExtension" ]]; then
+		#printf "%s/%s/%s/ does not exist.\n" "$pathRoot" "$student" "$pathExtension"
+	#else
+		#cp "$pathRoot/$student/$pathExtension"*$flag* "$destinationRoot/$student/returned" 2> /dev/null
+		#cp "$pathRoot/$student/"*$flag* "$destinationRoot/$student/returned" 2> /dev/null
+		find "$pathRoot/$student" -iname "*$flag*" -exec cp {} "$destinationRoot/$student/returned"
 		sudo chown -R "$student:$group" "$destinationRoot/$student/returned"
 		sudo chmod -R "$permissions" "$destinationRoot/$student/returned"
-	fi
+	#fi
 done < "$studentfile"
