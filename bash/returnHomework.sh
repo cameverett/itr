@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sourceRoot="/home"
 destinationRoot="/home"
 group="instructors"
