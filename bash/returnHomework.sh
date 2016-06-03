@@ -3,15 +3,17 @@ destinationRoot="/home"
 group="instructors"
 permissions="770"
 
-while getopts ":i:s:f:" opt; do
+while getopts ":i:s:f:p:" opt; do
 	case $opt in
 	i ) instructor="$OPTARG" ;;
 	s ) studentfile="$OPTARG" ;;
-	#p ) pathExtension="$OPTARG" ;;
+	p ) pathExtension="$OPTARG" ;;
 	f ) flag=$OPTARG ;;
 	* ) printf "Usage classman return -s </path/to/studentfile> -i <your_username> -f <flag> -p </path/in/your/homework/directory\n"
 	esac
 done
+
+echo "-p $pathExtension"
 
 if [[ -z $instructor ]] || [[ ! -f "$studentfile" ]] || [[ -z $flag ]]; then
 	if [[ -z $instructor ]]; then
