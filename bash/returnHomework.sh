@@ -37,7 +37,7 @@ while read student; do
 	#else
 		#cp "$pathRoot/$student/$pathExtension"*$flag* "$destinationRoot/$student/returned" 2> /dev/null
 		#cp "$pathRoot/$student/"*$flag* "$destinationRoot/$student/returned" 2> /dev/null
-		find "$pathRoot/$student" -iname "*$flag*" -exec cp {} "$destinationRoot/$student/returned"
+		find "$pathRoot/$student" -iname "*$flag*" -exec cp {} "$destinationRoot/$student/returned" \;
 		sudo chown -R "$student:$group" "$destinationRoot/$student/returned"
 		sudo chmod -R "$permissions" "$destinationRoot/$student/returned"
 	#fi
