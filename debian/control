@@ -1,13 +1,13 @@
 Source: classman-1.0.0
-Section: unknown
+Section: misc
 Priority: optional
 Maintainer: Homer White <Homer_White@georgetowncollege.edu>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.5
-Homepage: <insert the upstream URL, if relevant>
+Homepage: http://cameverett.github.io/itr
 
 Package: classman-1.0.0
 Architecture: all
 Depends: ${misc:Depends}
-Description: <insert up to 60 chars description>
- <insert long description, indented with spaces>
+Description: A simple interface for managing classes on a debian server.
+ This is a collection of notes and code resources for installing RStudio Server and configuring your Linux system in a way that is convenient for teaching statistics.
