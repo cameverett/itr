@@ -27,7 +27,7 @@ getHelpPage() {
 			;;
 		*)
 			printf "No man page for that action\n"
-			man classman_help
+			man classman
 	esac
 
 	exit 1
