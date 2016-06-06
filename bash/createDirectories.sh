@@ -36,7 +36,7 @@ chmod "740" $INSTRUCTOR_HOME_DIR/{mynotes,returned,homework}
 while read student; do
 	STUDENT_HOME_DIR="$sourceRoot/$student"
 	mkdir -p $STUDENT_HOME_DIR/{submit,returned,mynotes}
-	chown -R $student:$group $STUDENT_HOME_DIR/
+	chown -R $student:$group $STUDENT_HOME_DIR/{submit,returned,mynotes}
 	mkdir -p $INSTRUCTOR_HOME_DIR/returned/$student
 
 	if \
