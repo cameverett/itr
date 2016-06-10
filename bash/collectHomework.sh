@@ -58,13 +58,11 @@ timeCollected=$(date +"%D %H:%M:%S")
 if [[ ! -s "$destination/"$tag"log" ]]; then
 	printf "\n" > "$destination/"$tag"log"
 fi
-#printf "Logged at: %s\n" "$timeCollected" >> "$destination/"$tag"log"
 while read student; do
 	if find "$sourceRoot/$student/submit/"*$tag* 1> /dev/null 2>&1; then
 		mkdir -p "$destination/$student"
 		cp -r "$sourceRoot/$student/submit/"*$tag* "$destination/$student"
 	else
-		#printf "%s\t%s\n" "$student" "$tag" >> "$destination/"$tag"log"
 		pattern="'1i$student\'"
 		eval "sed -i -e $pattern "$destination/"$tag"log""
 	fi
