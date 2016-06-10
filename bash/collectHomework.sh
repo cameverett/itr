@@ -55,15 +55,17 @@ fi
 
 touch "$destination/"$tag"log"
 timeCollected=$(date +"%D %H:%M:%S")
-printf "Logged at: %s\n" "$timeCollected" >> "$destination/"$tag"log"
+#printf "Logged at: %s\n" "$timeCollected" >> "$destination/"$tag"log"
 while read student; do
 	if find "$sourceRoot/$student/submit/"*$tag* 1> /dev/null 2>&1; then
 		mkdir -p "$destination/$student"
 		cp -r "$sourceRoot/$student/submit/"*$tag* "$destination/$student"
 	else
-		printf "%s\t%s\n" "$student" "$tag" >> "$destination/"$tag"log"
+		#printf "%s\t%s\n" "$student" "$tag" >> "$destination/"$tag"log"
+		sed -i -e '1i$student\t$tag\' "$destination/"$tag"log"
 	fi
 done < "$studentfile"
+sed -i -e '1iLogged at: $timeCollected\' "$destination/"$tag"log"
 
 chown -R "$instructor:$INSTRUCTOR_GROUP" "$destination"
 chmod -R 740 "$destination"
