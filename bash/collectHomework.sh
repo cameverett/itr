@@ -56,7 +56,7 @@ fi
 touch "$destination/"$tag"log"
 timeCollected=$(date +"%D %H:%M:%S")
 if [[ ! -s "$destination/"$tag"log" ]]; then
-	printf "Created at %s\n" "$timeCollected" > "$destination"$tag"$log"
+	printf "Created at %s\n" "$timeCollected" > "$destination"$tag"log"
 fi
 #printf "Logged at: %s\n" "$timeCollected" >> "$destination/"$tag"log"
 while read student; do
