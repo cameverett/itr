@@ -56,7 +56,7 @@ fi
 touch "$destination/"$tag"log"
 timeCollected=$(date +"%D %H:%M:%S")
 if [[ ! -s "$destination/"$tag"log" ]]; then
-	printf "Created at %s\n" "$timeCollected" > "$destination/"$tag"log"
+	printf "\n" > "$destination/"$tag"log"
 fi
 #printf "Logged at: %s\n" "$timeCollected" >> "$destination/"$tag"log"
 while read student; do
@@ -65,10 +65,11 @@ while read student; do
 		cp -r "$sourceRoot/$student/submit/"*$tag* "$destination/$student"
 	else
 		#printf "%s\t%s\n" "$student" "$tag" >> "$destination/"$tag"log"
-		sed -i -e '2i$student\' "$destination/"$tag"log"
+		pattern="\'1i$student\\'"
+		sed -i -e $pattern "$destination/"$tag"log"
 	fi
 done < "$studentfile"
-sed -i -e '2iLogged at: $timeCollected\' "$destination/"$tag"log"
+sed -i -e '1iLogged at: $timeCollected\' "$destination/"$tag"log"
 
 chown -R "$instructor:$INSTRUCTOR_GROUP" "$destination"
 chmod -R 740 "$destination"
