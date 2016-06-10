@@ -65,11 +65,11 @@ while read student; do
 		cp -r "$sourceRoot/$student/submit/"*$tag* "$destination/$student"
 	else
 		#printf "%s\t%s\n" "$student" "$tag" >> "$destination/"$tag"log"
-		pattern="\'1i$student\\'"
-		sed -i -e $pattern "$destination/"$tag"log"
+		pattern="'1i$student\'"
+		eval "sed -i -e $pattern "$destination/"$tag"log""
 	fi
 done < "$studentfile"
-sed -i -e '1iLogged at: $timeCollected\' "$destination/"$tag"log"
+eval "sed -i -e '1iLogged at: $timeCollected\' "$destination/"$tag"log""
 
 chown -R "$instructor:$INSTRUCTOR_GROUP" "$destination"
 chmod -R 740 "$destination"
