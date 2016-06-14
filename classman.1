@@ -1,0 +1,41 @@
+.TH classman package 1 "2 June 2016" "/usr/lib/classman" "Manual: classman commands"
+
+.SH NAME
+classman \- Entry point for classman Debian Package
+
+.SH SYNOPSIS
+classman <action> [options]
+
+.SH DESCRIPTION
+The executable bash script classman acts as the entry point to the other packages utilities. It allows for git style commands such as classman create [options] similar to git commit [options] in form not function. The "actions" correspond to the different scripts found in the bash folder like so:
+.PP
+publish => /usr/lib/classman/publishHomework.sh
+.PP
+collect => /usr/lib/classman/collectHomework.sh
+.PP
+create => /usr/lib/classman/createHomework.sh
+.PP
+return => /usr/lib/classman/returnHomework.sh
+
+.PP
+The goal of the package is to provide a high level and easy to learn interface for low level commands.
+.SH OPTIONS
+See help pages for each action for possible options to be called by scripts (below).
+.PP
+Examples
+.PP
+classman publish -s </path/to/studentfile> -a </path/to/files_to_send>
+.PP
+classman create -s </path/to/studentfile>
+
+.SH SEE ALSO
+.B classman help collect
+.PP
+.B classman help create
+.PP
+.B classman help publish
+.PP
+.B classman help return
+
+.SH AUTHOR
+Cameron Everett (cameronjeverett@gmail.com)

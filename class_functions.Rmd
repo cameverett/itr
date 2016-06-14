@@ -1,0 +1,55 @@
+# Automated Class Functions
+
+## Preliminary Notes
+
+The stuff below works on my Debian system running Perl version 5.20.  Note that in the new scripts the group is "instructors", not "admins".
+
+You no longer need to create a password file:  all you need are admin privileges.
+
+This version of the scripts works when you the students are all directoy under the `/home` directory (not in, for instance `/home/FAST`.  Also it works best if you have just one class at a time.  I'll fix this in later versions, as needed.)
+
+## Directory Creation
+
+To create directories, use the script `creatdirectories.pl` in your Home directory.  Open the shell (**Tools --> Shell**) and run:
+
+```{sh eval = FALSE}
+sudo perl createdirectories.pl --studentfile=students.txt
+```
+
+## Homework Collection
+
+To collect homework,  just modify the command below and run it from within R:
+
+```{r eval = FALSE}
+system("perl collecthomework.pl --instructor=homer --assignment=HW02 --studentfile=students.txt")
+```
+
+No `sudo` is required here.
+
+## Returning Homework
+
+Put the script `returnhomework.pl` into your Home directory.  Open it and modify the following parameters:
+
+* `$instructor`
+* `$studentfile`
+* `$flag`
+
+Open the shell (**Tools --> Shell** ) and run something like this:
+
+
+```{sh eval = FALSE}
+sudo perl returnhomework.pl --path=HW02
+```
+
+## Generating a Report
+
+For this you will use classr, as described in the package vignette, i.e., something like:
+
+```{r eval = FALSE}
+myReport <- SubmissionReport(studentfile="students.txt",
+                             folder="homework",
+                             assigntype="DA")
+```
+
+
+
